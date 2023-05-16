@@ -193,6 +193,7 @@
       justify-content: center;
       img {
         height: 400px;
+        display: none;
       }
     }
     .HeroImage {
@@ -275,8 +276,14 @@
     display: none;
   }
 
-  .HeroLogo {
-    display: none !important;
+  .Home {
+    .Hero {
+      .HeroLogo {
+        img {
+          display: block;
+        }
+      }
+    }
   }
 
   .MobileNav {
@@ -285,12 +292,6 @@
 }
 
 @media screen and (max-width: 805px) {
-  .Home {
-    .Hero {
-      .HeroImage {
-      }
-    }
-  }
   .Menu {
     .FoodMenu {
       flex-direction: column;
