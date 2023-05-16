@@ -44,16 +44,16 @@
         &.Open {
           .BurgerBar {
             background-color: transparent;
-            width: 28px;
+            // width: 28px;
 
             &::before {
-              width: 28px;
+              //   width: 28px;
               rotate: 45deg;
             }
 
             &::after {
               rotate: -45deg;
-              width: 28px;
+              //   width: 28px;
             }
           }
         }
@@ -63,7 +63,7 @@
           height: 3px;
           width: 100%;
           position: relative;
-          transition: background-color 0.3s ease, width 0.3s ease;
+          transition: background-color 0.3s ease, top 0.3s ease;
 
           &::before,
           &::after {
@@ -77,11 +77,11 @@
           }
 
           &::before {
-            top: -10px;
+            top: -14px;
           }
 
           &::after {
-            top: 10px;
+            top: 14px;
           }
         }
       }
