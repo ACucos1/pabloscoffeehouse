@@ -1,0 +1,70 @@
+:root {
+  --color-primary: #376b2f;
+  // --color-secondary: #2f3f6b;
+  --color-secondary: #468d87;
+  --color-ternary: #ffc599;
+  --color-quartiary: #6b2f37;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 48px;
+  font-weight: 500;
+  margin: 0;
+}
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+section {
+  width: calc(100% - 300px);
+  margin-left: 300px;
+}
+
+.dotted-spacer {
+  width: 100%;
+  height: 1rem;
+  // background-color: var(--color-quartiary);
+  background-image: linear-gradient(
+    to right,
+    black 33%,
+    rgba(255, 255, 255, 0) 0%
+  );
+  background-position: bottom;
+  background-size: 3px 1px;
+  background-repeat: repeat-x;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    color: white;
+    background: black;
+  }
+}
+
+@media screen and (max-width: 1025px) {
+  section {
+    width: 100%;
+    margin-left: 0;
+  }
+}

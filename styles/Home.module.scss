@@ -1,0 +1,308 @@
+.MobileNav {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  height: 80px;
+  padding: 1rem;
+  width: 100%;
+  background-color: var(--color-ternary);
+  border-bottom: 1px solid var(--color-secondary);
+  transition: height 0.5s ease;
+  overflow: hidden;
+
+  &.Open {
+    height: 350px;
+  }
+
+  .NavInner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // flex-wrap: wrap;
+    width: 100%;
+
+    .NavControls {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      .Logo {
+        height: 100%;
+        //   max-width: 100px;
+        max-height: 80px;
+      }
+
+      .Burger {
+        height: 40px;
+        width: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &.Open {
+          .BurgerBar {
+            background-color: transparent;
+            width: 28px;
+
+            &::before {
+              width: 28px;
+              rotate: 45deg;
+            }
+
+            &::after {
+              rotate: -45deg;
+              width: 28px;
+            }
+          }
+        }
+
+        .BurgerBar {
+          background-color: var(--color-secondary);
+          height: 3px;
+          width: 100%;
+          position: relative;
+          transition: background-color 0.3s ease, width 0.3s ease;
+
+          &::before,
+          &::after {
+            content: "";
+            width: 100%;
+            height: 3px;
+            background-color: var(--color-secondary);
+            position: absolute;
+            transform-origin: left;
+            transition: rotate 0.3s ease, width 0.3s ease;
+          }
+
+          &::before {
+            top: -10px;
+          }
+
+          &::after {
+            top: 10px;
+          }
+        }
+      }
+    }
+
+    .NavLists {
+      //   display: flex;
+      //   background-color: #fff;
+      width: 80%;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+      &.Open {
+        opacity: 1;
+      }
+
+      hr {
+        border: 1px solid var(--color-secondary);
+        margin-inline: 1rem;
+      }
+
+      .NavList {
+        li {
+          border-bottom: 1px solid var(--color-quartiary);
+        }
+      }
+
+      .NavList,
+      .Socials {
+        margin-block: 2rem;
+        font-size: 24px;
+        color: var(--color-quartiary);
+      }
+
+      .Socials {
+        display: flex;
+      }
+
+      .Socials img {
+        height: 40px;
+        width: 40px;
+      }
+    }
+  }
+}
+
+.Nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  height: 100svh;
+  width: 300px;
+  background-color: var(--color-ternary);
+  background-image: url(../public/stucco-smooth.png);
+  background-size: contain;
+  background-blend-mode: overlay;
+
+  .NavInner {
+    text-align: center;
+
+    .Logo {
+      width: 60%;
+      margin-block: 80px;
+    }
+
+    ul {
+      li {
+        color: var(--color-quartiary);
+        font-weight: 300;
+        font-size: 27px;
+      }
+    }
+
+    .Socials {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      li {
+        margin-inline: 1rem;
+        img {
+          height: 20px;
+          width: 20px;
+        }
+      }
+    }
+  }
+}
+
+.Home {
+  min-height: 100vh;
+  min-height: 100svh;
+
+  .Hero {
+    width: 100%;
+    height: 100vh;
+    height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    .HeroLogo {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      //   background-color: #0000002d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img {
+        height: 500px;
+      }
+    }
+    .HeroImage {
+      height: 100%;
+      object-fit: cover;
+      //   object-position: center;
+      width: 100%;
+    }
+  }
+}
+
+.About {
+  background-color: var(--color-quartiary);
+  text-align: center;
+  padding-block: 5rem;
+
+  img {
+    height: 200px;
+    margin-block-end: 2rem;
+  }
+
+  h1 {
+    color: var(--color-ternary);
+  }
+
+  p {
+    width: 50%;
+    margin: auto;
+  }
+}
+
+.Menu {
+  background-color: var(--color-ternary);
+  text-align: center;
+  padding-block: 5rem;
+  color: var(--color-quartiary);
+
+  .FoodMenu {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    .MenuItem {
+      width: 50%;
+      //   background-color: #fff;
+      display: flex;
+      align-items: center;
+
+      img {
+        flex: 0.5;
+        margin: 1rem;
+      }
+
+      .MenuItemText {
+        flex: 3;
+        text-align: left;
+        margin-top: 1rem;
+        .MenuItemTitle {
+          display: flex;
+          height: 1rem;
+          align-items: center;
+
+          h3 {
+            white-space: nowrap;
+          }
+        }
+      }
+
+      .Price {
+        font-weight: 800;
+        flex: 1;
+        margin-bottom: 2rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1025px) {
+  .Nav {
+    display: none;
+  }
+
+  .MobileNav {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 805px) {
+  .Menu {
+    .FoodMenu {
+      flex-direction: column;
+      align-items: center;
+      //   justify-content: center;
+
+      .MenuItem {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .Home {
+    .Hero {
+      .HeroLogo {
+        img {
+          height: unset;
+          width: 60%;
+        }
+      }
+    }
+  }
+}
