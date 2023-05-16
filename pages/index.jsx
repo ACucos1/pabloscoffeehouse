@@ -27,6 +27,7 @@ export default function Home() {
               <li>Home</li>
               <li>About</li>
               <li>Contact</li>
+              <li>Order Online</li>
             </ul>
             {/* <hr /> */}
             <ul className={styles.Socials}>
@@ -47,6 +48,7 @@ export default function Home() {
             <li>Home</li>
             <li>About</li>
             <li>Contact</li>
+            <li>Order Online</li>
           </ul>
           <ul className={styles.Socials}>
             <li>
@@ -61,10 +63,10 @@ export default function Home() {
       <section className={styles.Home}>
         <div className={styles.Hero}>
           <div className={styles.HeroLogo}>
-            <img src='/LogoIcon4.png' alt='' />
+            <img src='/LogoIcon2.png' alt='' />
             {/* <h1>Welcome to Pablo&apos;s</h1> */}
           </div>
-          <img src='/coffee-hero.jpg' alt='' className={styles.HeroImage} />
+          <img src='/salad-hero.jpg' alt='' className={styles.HeroImage} />
         </div>
       </section>
 

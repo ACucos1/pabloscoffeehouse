@@ -13,7 +13,7 @@
   overflow: hidden;
 
   &.Open {
-    height: 325px;
+    height: 350px;
   }
 
   .NavInner {
@@ -192,7 +192,7 @@
       align-items: center;
       justify-content: center;
       img {
-        height: 500px;
+        height: 400px;
       }
     }
     .HeroImage {
@@ -275,12 +275,22 @@
     display: none;
   }
 
+  .HeroLogo {
+    display: none !important;
+  }
+
   .MobileNav {
     display: flex;
   }
 }
 
 @media screen and (max-width: 805px) {
+  .Home {
+    .Hero {
+      .HeroImage {
+      }
+    }
+  }
   .Menu {
     .FoodMenu {
       flex-direction: column;
