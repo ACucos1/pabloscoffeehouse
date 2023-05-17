@@ -83,6 +83,48 @@ export default function Home() {
         </p>
       </section>
 
+      <section className={styles.Info}>
+        <div className={styles.Grid}>
+          <div className={styles.GridItem}>
+            <img src='/coffee-hero.jpg' alt='' />
+          </div>
+          <div className={styles.GridItem}>
+            <div className={styles.GridItemInner}>
+              <h2>Hours</h2>
+              <span>Mon - Fri // 9:00 - 23:00</span>
+              <span>Sat // 10:00 - 1:00</span>
+              <span>Sun // CLOSED</span>
+            </div>
+          </div>
+          <div className={styles.GridItem}>
+            <img src='/coffee-hero.jpg' alt='' />
+          </div>
+          <div className={styles.GridItem}>
+            <img src='/coffee-hero.jpg' alt='' />
+          </div>
+          <div className={styles.GridItem}>
+            <div className={styles.GridItemInner}>
+              <h2>Reservations</h2>
+              <span>Reservation Numbers:</span>
+              <span>+123 456 7891</span>
+              <span>+123 456 7891</span>
+            </div>
+          </div>
+          <div className={styles.GridItem}>
+            <img src='/coffee-hero.jpg' alt='' />
+          </div>
+          <div className={styles.GridItem}>
+            <img src='/coffee-hero.jpg' alt='' />
+          </div>
+          <div className={styles.GridItem}>
+            <div className={styles.GridItemInner}>
+              <h2>Stores</h2>
+              <span>Shops @ Don Mills</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className={styles.Menu}>
         <h1>Our Menu</h1>
         <p>
