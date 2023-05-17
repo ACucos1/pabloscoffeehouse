@@ -1,8 +1,39 @@
 /* eslint-disable @next/next/no-img-element */
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import { Loader } from "@googlemaps/js-api-loader";
 import styles from "../styles/Home.module.scss";
 
+const GOOGLE_MAPS_API_KEY = "AIzaSyBY-wvD3hJfZXZ2w5HaH4VtePd_k6Mf2ow";
+
+const loader = new Loader({
+  apiKey: GOOGLE_MAPS_API_KEY,
+  version: "weekly",
+});
+
 export default function Home() {
+  const mapRef = useRef();
+  useEffect(() => {
+    let map;
+    loader.load().then(async () => {
+      const { Map } = await google.maps.importLibrary("maps");
+
+      map = new Map(mapRef.current, {
+        center: { lat: 43.734626, lng: -79.345199 },
+        zoom: 16,
+        // zoomControl: true,
+        // scaleControl: true,
+        // fullScreenControl: true,
+        // gestureHandling: "cooperative",
+      });
+
+      new google.maps.Marker({
+        position: { lat: 43.734626, lng: -79.345199 },
+        map,
+        title: "Pablos Coffee",
+      });
+    });
+  }, []);
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   return (
     <>
@@ -147,6 +178,20 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      <section className={styles.Map}>
+        {/* <iframe
+          src='https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d720.713143278754!2d-79.3453886442259!3d43.73438939847341!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sca!4v1684335613547!5m2!1sen!2sca'
+          width='100%'
+          height='450'
+          style={{ border: "0" }}
+          allowFullScreen=''
+          loading='lazy'
+          referrerPolicy='no-referrer-when-downgrade'></iframe> */}
+        <div ref={mapRef}></div>
+      </section>
+
+      <section className={styles.Footer}></section>
     </>
   );
 }

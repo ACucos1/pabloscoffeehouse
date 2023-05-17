@@ -306,6 +306,18 @@
   }
 }
 
+.Map {
+  div {
+    // z-index: 999;
+    height: 400px;
+  }
+}
+
+.Footer {
+  height: 200px;
+  width: 100%;
+}
+
 @media screen and (max-width: 1200px) {
   .Info {
     .Grid {
