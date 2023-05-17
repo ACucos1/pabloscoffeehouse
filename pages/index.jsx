@@ -24,6 +24,10 @@ export default function Home() {
         // scaleControl: true,
         // fullScreenControl: true,
         // gestureHandling: "cooperative",
+        mapTypeControlOptions: {
+          style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+          // position: google.maps.ControlPosition.BOTTOM_LEFT,
+        },
       });
 
       new google.maps.Marker({
@@ -179,17 +183,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className={styles.Map}>
-        {/* <iframe
-          src='https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d720.713143278754!2d-79.3453886442259!3d43.73438939847341!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sca!4v1684335613547!5m2!1sen!2sca'
-          width='100%'
-          height='450'
-          style={{ border: "0" }}
-          allowFullScreen=''
-          loading='lazy'
-          referrerPolicy='no-referrer-when-downgrade'></iframe> */}
-        <div ref={mapRef}></div>
-      </section>
+      <section className={styles.Map} ref={mapRef}></section>
 
       <section className={styles.Footer}></section>
     </>
