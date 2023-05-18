@@ -163,6 +163,41 @@ export default function Home() {
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates
           iusto, fugiat impedit odio doloribus ullam.
         </p>
+        <h2 id='drinks'>Drinks</h2>
+        <div className={styles.FoodMenu}>
+          {[...Array(8)].map((_, idx) => (
+            <div key={idx} className={styles.MenuItem}>
+              <img src='latte-icon.png' alt='' />
+              <div className={styles.MenuItemText}>
+                <div className={styles.MenuItemTitle}>
+                  <h3>Menu Item</h3>
+                  <div className='dotted-spacer'></div>
+                </div>
+                <p>Menu Item Description</p>
+              </div>
+              <span className={styles.Price}>$X.XX</span>
+            </div>
+          ))}
+        </div>
+
+        <h2 id='salads'>Salads</h2>
+        <div className={styles.FoodMenu}>
+          {[...Array(8)].map((_, idx) => (
+            <div key={idx} className={styles.MenuItem}>
+              <img src='latte-icon.png' alt='' />
+              <div className={styles.MenuItemText}>
+                <div className={styles.MenuItemTitle}>
+                  <h3>Menu Item</h3>
+                  <div className='dotted-spacer'></div>
+                </div>
+                <p>Menu Item Description</p>
+              </div>
+              <span className={styles.Price}>$X.XX</span>
+            </div>
+          ))}
+        </div>
+
+        <h2 id='sandwiches'>Sandwiches</h2>
         <div className={styles.FoodMenu}>
           {[...Array(8)].map((_, idx) => (
             <div key={idx} className={styles.MenuItem}>
