@@ -182,7 +182,17 @@ export default function Home() {
 
       <section className={styles.Map} ref={mapRef}></section>
 
-      <section className={styles.Footer}></section>
+      <section className={styles.Footer}>
+        &#169; 2023 Pablo&apos;s Coffee House{" "}
+        <ul>
+          <li>
+            <img src='instagram.svg' alt='' />
+          </li>
+          <li>
+            <img src='facebook-f.svg' alt='' />
+          </li>
+        </ul>
+      </section>
     </>
   );
 }
