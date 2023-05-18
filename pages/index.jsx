@@ -20,10 +20,7 @@ export default function Home() {
       map = new Map(mapRef.current, {
         center: { lat: 43.734626, lng: -79.345199 },
         zoom: 16,
-        // zoomControl: true,
-        // scaleControl: true,
-        // fullScreenControl: true,
-        // gestureHandling: "cooperative",
+
         mapTypeControlOptions: {
           style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
           // position: google.maps.ControlPosition.BOTTOM_LEFT,
