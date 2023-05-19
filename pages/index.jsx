@@ -123,8 +123,8 @@ export default function Home() {
           <div className={styles.GridItem}>
             <div className={styles.GridItemInner}>
               <h2>Hours</h2>
-              <span>Mon - Fri // 9:00 - 23:00</span>
-              <span>Sat // 10:00 - 1:00</span>
+              <span>Mon - Fri // 9:00am - 11:00pm</span>
+              <span>Sat // 10:00am - 1:00am</span>
               <span>Sun // CLOSED</span>
             </div>
           </div>
