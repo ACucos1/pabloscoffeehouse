@@ -42,7 +42,11 @@ export default function Home() {
         className={`${styles.MobileNav} ${mobileMenuOpen ? styles.Open : ""}`}>
         <div className={styles.NavInner}>
           <div className={styles.NavControls}>
-            <img src='/PablosLogo2.png' alt='x' className={styles.Logo} />
+            <img
+              src='/PablosLogo2.png'
+              alt='x'
+              className={`${styles.Logo} ${mobileMenuOpen ? styles.Open : ""}`}
+            />
             <div
               className={`${styles.Burger} ${
                 mobileMenuOpen ? styles.Open : ""
@@ -75,7 +79,7 @@ export default function Home() {
       </nav>
       <nav className={styles.Nav}>
         <div className={styles.NavInner}>
-          <img src='/PablosLogo2.png' alt='x' className={styles.Logo} />
+          <img src='/PablosLogo2.png' alt='x' className={`${styles.Logo} `} />
           <ul className={styles.NavList}>
             <li>Home</li>
             <li>About</li>
