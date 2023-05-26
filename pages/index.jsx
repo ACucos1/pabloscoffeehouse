@@ -154,11 +154,8 @@ export default function Home({ pageData, menuCategories }) {
       </section>
 
       <section className={styles.Menu}>
-        <h1>Our Menu</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates
-          iusto, fugiat impedit odio doloribus ullam.
-        </p>
+        <h1>{pageData.menuHeading}</h1>
+        <p>{pageData.menuSubHeading}</p>
         {menuCategories.map((category, idx) => (
           <div key={idx}>
             <h2 id={category.title.toLowerCase()}>{category.title}</h2>
@@ -194,6 +191,8 @@ export async function getStaticProps(context) {
   const pageData = await client.fetch(`*[_type=="mainPage"][0]{
     siteName,
     aboutText,
+    menuHeading,
+    menuSubHeading,
     "gridImages": gridImages[].asset->url
 
   }`);
