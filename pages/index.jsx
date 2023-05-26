@@ -1,5 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
+import Head from "next/head";
+import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
+import client from "../sanity/client";
 import { Loader } from "@googlemaps/js-api-loader";
 import styles from "../styles/Home.module.scss";
 
@@ -10,8 +13,10 @@ const loader = new Loader({
   version: "weekly",
 });
 
-export default function Home() {
+export default function Home({ pageData, menuCategories }) {
   const mapRef = useRef();
+
+  // Google Maps init
   useEffect(() => {
     let map;
     loader.load().then(async () => {
@@ -35,9 +40,27 @@ export default function Home() {
     });
   }, []);
 
+  const handleScroll = (e) => {
+    e.preventDefault();
+
+    const href = e.currentTarget.href;
+    const targetId = href.replace(/.*\#/, "");
+
+    const elem = document.getElementById(targetId);
+
+    elem?.scrollIntoView({
+      behavior: "smooth",
+    });
+  };
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   return (
     <>
+      <Head>
+        <title>{pageData.siteName}</title>
+        <meta name='description' content='Artisan Coffee & Pastries' />
+        <link rel='icon' href='/favicon.ico' />
+      </Head>
       <nav
         className={`${styles.MobileNav} ${mobileMenuOpen ? styles.Open : ""}`}>
         <div className={styles.NavInner}>
@@ -59,44 +82,20 @@ export default function Home() {
             className={`${styles.NavLists} ${
               mobileMenuOpen ? styles.Open : ""
             }`}>
-            <ul className={styles.NavList}>
-              <li>Home</li>
-              <li>About</li>
-              <li>Contact</li>
-              <li>Order Online</li>
-            </ul>
+            <NavList handleScroll={handleScroll} />
             {/* <hr /> */}
-            <ul className={styles.Socials}>
-              <li>
-                <img src='instagram.svg' alt='' />
-              </li>
-              <li>
-                <img src='facebook-f.svg' alt='' />
-              </li>
-            </ul>
+            <SocialsList />
           </div>
         </div>
       </nav>
       <nav className={styles.Nav}>
         <div className={styles.NavInner}>
           <img src='/PablosLogo2.png' alt='x' className={`${styles.Logo} `} />
-          <ul className={styles.NavList}>
-            <li>Home</li>
-            <li>About</li>
-            <li>Contact</li>
-            <li>Order Online</li>
-          </ul>
-          <ul className={styles.Socials}>
-            <li>
-              <img src='instagram.svg' alt='' />
-            </li>
-            <li>
-              <img src='facebook-f.svg' alt='' />
-            </li>
-          </ul>
+          <NavList handleScroll={handleScroll} />
+          <SocialsList />
         </div>
       </nav>
-      <section className={styles.Home}>
+      <section className={styles.Home} id='Home'>
         <div className={styles.Hero}>
           <div className={styles.HeroLogo}>
             <img src='/LogoIcon2.png' alt='' />
@@ -106,23 +105,16 @@ export default function Home() {
         </div>
       </section>
 
-      <section className={styles.About}>
+      <section className={styles.About} id='About'>
         <img src='LogoIcon3.png' alt='' />
         <h1>About Pablo&apos;s</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima,
-          reiciendis fuga eos voluptates repellat expedita nulla, perspiciatis
-          nisi iure inventore ullam velit dolore dolorum. Mollitia perspiciatis,
-          ad iusto sint nihil distinctio! Totam, eligendi ullam numquam nobis
-          accusamus suscipit adipisci iste, iure ex quos minus rerum. Laudantium
-          exercitationem debitis cupiditate officia?
-        </p>
+        <p>{pageData.aboutText ?? ""}</p>
       </section>
 
       <section className={styles.Info}>
         <div className={styles.Grid}>
           <div className={styles.GridItem}>
-            <img src='/coffee-hero.jpg' alt='' />
+            <img src={pageData.gridImages[0]} alt='' />
           </div>
           <div className={styles.GridItem}>
             <div className={styles.GridItemInner}>
@@ -133,10 +125,10 @@ export default function Home() {
             </div>
           </div>
           <div className={styles.GridItem}>
-            <img src='/coffee-hero.jpg' alt='' />
+            <img src={pageData.gridImages[1]} alt='' />
           </div>
           <div className={styles.GridItem}>
-            <img src='/coffee-hero.jpg' alt='' />
+            <img src={pageData.gridImages[2]} alt='' />
           </div>
           <div className={styles.GridItem}>
             <div className={styles.GridItemInner}>
@@ -147,10 +139,10 @@ export default function Home() {
             </div>
           </div>
           <div className={styles.GridItem}>
-            <img src='/coffee-hero.jpg' alt='' />
+            <img src={pageData.gridImages[3]} alt='' />
           </div>
           <div className={styles.GridItem}>
-            <img src='/coffee-hero.jpg' alt='' />
+            <img src={pageData.gridImages[4]} alt='' />
           </div>
           <div className={styles.GridItem}>
             <div className={styles.GridItemInner}>
@@ -167,71 +159,98 @@ export default function Home() {
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates
           iusto, fugiat impedit odio doloribus ullam.
         </p>
-        <h2 id='drinks'>Drinks</h2>
-        <div className={styles.FoodMenu}>
-          {[...Array(8)].map((_, idx) => (
-            <div key={idx} className={styles.MenuItem}>
-              <img src='latte-icon.png' alt='' />
-              <div className={styles.MenuItemText}>
-                <div className={styles.MenuItemTitle}>
-                  <h3>Menu Item</h3>
-                  <div className='dotted-spacer'></div>
+        {menuCategories.map((category, idx) => (
+          <div key={idx}>
+            <h2 id={category.title.toLowerCase()}>{category.title}</h2>
+            <div className={styles.FoodMenu}>
+              {category.items.map((item, idx) => (
+                <div key={idx} className={styles.MenuItem}>
+                  <img src={item.itemImage} alt='' />
+                  <div className={styles.MenuItemText}>
+                    <div className={styles.MenuItemTitle}>
+                      <h3>{item.itemName}</h3>
+                      <div className='dotted-spacer'></div>
+                    </div>
+                    <p>{item.itemDesc ?? "   "}</p>
+                  </div>
+                  <span className={styles.Price}>${item.itemPrice}</span>
                 </div>
-                <p>Menu Item Description</p>
-              </div>
-              <span className={styles.Price}>$X.XX</span>
+              ))}
             </div>
-          ))}
-        </div>
-
-        <h2 id='salads'>Salads</h2>
-        <div className={styles.FoodMenu}>
-          {[...Array(8)].map((_, idx) => (
-            <div key={idx} className={styles.MenuItem}>
-              <img src='latte-icon.png' alt='' />
-              <div className={styles.MenuItemText}>
-                <div className={styles.MenuItemTitle}>
-                  <h3>Menu Item</h3>
-                  <div className='dotted-spacer'></div>
-                </div>
-                <p>Menu Item Description</p>
-              </div>
-              <span className={styles.Price}>$X.XX</span>
-            </div>
-          ))}
-        </div>
-
-        <h2 id='sandwiches'>Sandwiches</h2>
-        <div className={styles.FoodMenu}>
-          {[...Array(8)].map((_, idx) => (
-            <div key={idx} className={styles.MenuItem}>
-              <img src='latte-icon.png' alt='' />
-              <div className={styles.MenuItemText}>
-                <div className={styles.MenuItemTitle}>
-                  <h3>Menu Item</h3>
-                  <div className='dotted-spacer'></div>
-                </div>
-                <p>Menu Item Description</p>
-              </div>
-              <span className={styles.Price}>$X.XX</span>
-            </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </section>
 
-      <section className={styles.Map} ref={mapRef}></section>
+      <section className={styles.Map} ref={mapRef} id='Contact'></section>
 
       <section className={styles.Footer}>
-        &#169; 2023 Pablo&apos;s Coffee House{" "}
-        <ul>
-          <li>
-            <img src='instagram.svg' alt='' />
-          </li>
-          <li>
-            <img src='facebook-f.svg' alt='' />
-          </li>
-        </ul>
+        &#169; 2023 Pablo&apos;s Coffee House <SocialsList />
       </section>
     </>
   );
 }
+
+export async function getStaticProps(context) {
+  const pageData = await client.fetch(`*[_type=="mainPage"][0]{
+    siteName,
+    aboutText,
+    "gridImages": gridImages[].asset->url
+
+  }`);
+  const menuCategories = await client.fetch(`*[_type=="menuCategory"] {
+    "title": title,
+    "items": menuItems[]-> {
+      itemName,
+      itemPrice,
+      itemDesc,
+      "itemImage": itemImage.asset->url
+    }
+  }`);
+
+  return {
+    props: {
+      pageData,
+      menuCategories,
+    },
+  };
+}
+
+const NavList = ({ handleScroll }) => (
+  <ul className={styles.NavList}>
+    <li>
+      <Link href='#Home' scroll onClick={handleScroll}>
+        Home
+      </Link>
+    </li>
+    <li>
+      <Link href='#About' scroll onClick={handleScroll}>
+        About
+      </Link>
+    </li>
+    <li>
+      <Link href='#Contact' scroll onClick={handleScroll}>
+        Contact
+      </Link>
+    </li>
+    <li>
+      <Link href='#Order' scroll onClick={handleScroll}>
+        Order Online
+      </Link>
+    </li>
+  </ul>
+);
+
+const SocialsList = () => (
+  <ul className={styles.Socials}>
+    <li>
+      <Link href=''>
+        <img src='instagram.svg' alt='' />
+      </Link>
+    </li>
+    <li>
+      <Link href=''>
+        <img src='facebook-f.svg' alt='' />
+      </Link>
+    </li>
+  </ul>
+);
