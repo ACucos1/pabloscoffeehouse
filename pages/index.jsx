@@ -13,7 +13,7 @@ const loader = new Loader({
   version: "weekly",
 });
 
-export default function Home({ pageData, menuCategories }) {
+export default function Home({ pageData, menuCategories, navLinks }) {
   const mapRef = useRef();
 
   // Google Maps init
@@ -53,6 +53,10 @@ export default function Home({ pageData, menuCategories }) {
     });
   };
 
+  useEffect(() => {
+    console.log(navLinks);
+  }, []);
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   return (
     <>
@@ -82,17 +86,16 @@ export default function Home({ pageData, menuCategories }) {
             className={`${styles.NavLists} ${
               mobileMenuOpen ? styles.Open : ""
             }`}>
-            <NavList handleScroll={handleScroll} />
-            {/* <hr /> */}
-            <SocialsList />
+            <NavList handleScroll={handleScroll} links={navLinks.navLinks} />
+            <SocialsList links={navLinks.socialLinks} />
           </div>
         </div>
       </nav>
       <nav className={styles.Nav}>
         <div className={styles.NavInner}>
           <img src='/PablosLogo2.png' alt='x' className={`${styles.Logo} `} />
-          <NavList handleScroll={handleScroll} />
-          <SocialsList />
+          <NavList handleScroll={handleScroll} links={navLinks.navLinks} />
+          <SocialsList links={navLinks.socialLinks} />
         </div>
       </nav>
       <section className={styles.Home} id='Home'>
@@ -181,7 +184,8 @@ export default function Home({ pageData, menuCategories }) {
       <section className={styles.Map} ref={mapRef} id='Contact'></section>
 
       <section className={styles.Footer}>
-        &#169; 2023 Pablo&apos;s Coffee House <SocialsList />
+        &#169; 2023 Pablo&apos;s Coffee House{" "}
+        <SocialsList links={navLinks.socialLinks} />
       </section>
     </>
   );
@@ -206,42 +210,35 @@ export async function getStaticProps(context) {
     }
   }`);
 
+  const navLinks = await client.fetch(`*[_type == "navLinks"][0] {
+    "navLinks": links,
+    "socialLinks": socialLnks
+  }`);
+
   return {
     props: {
       pageData,
       menuCategories,
+      navLinks,
     },
   };
 }
 
-const NavList = ({ handleScroll }) => (
+const NavList = ({ handleScroll, links }) => (
   <ul className={styles.NavList}>
-    <li>
-      <Link href='#Home' scroll onClick={handleScroll}>
-        Home
-      </Link>
-    </li>
-    <li>
-      <Link href='#About' scroll onClick={handleScroll}>
-        About
-      </Link>
-    </li>
-    <li>
-      <Link href='#Contact' scroll onClick={handleScroll}>
-        Contact
-      </Link>
-    </li>
-    <li>
-      <Link href='#Order' scroll onClick={handleScroll}>
-        Order Online
-      </Link>
-    </li>
+    {links.map((link, idx) => (
+      <li key={idx}>
+        <Link href={link.link} onClick={handleScroll}>
+          {link.linkText}
+        </Link>
+      </li>
+    ))}
   </ul>
 );
 
-const SocialsList = () => (
+const SocialsList = ({ links }) => (
   <ul className={styles.Socials}>
-    <li>
+    {/* <li>
       <Link href=''>
         <img src='instagram.svg' alt='' />
       </Link>
@@ -250,6 +247,16 @@ const SocialsList = () => (
       <Link href=''>
         <img src='facebook-f.svg' alt='' />
       </Link>
-    </li>
+    </li> */}
+    {links.map((link, idx) => (
+      <li key={idx}>
+        <Link href={link.link ?? ""}>
+          <img
+            src={`${link.linkText.toLowerCase()}.svg`}
+            alt={`${link.linkText}`}
+          />
+        </Link>
+      </li>
+    ))}
   </ul>
 );
