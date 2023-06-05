@@ -65,46 +65,39 @@ export default function Home({ pageData, menuCategories, navLinks }) {
         <meta name='description' content='Artisan Coffee & Pastries' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <nav
-        className={`${styles.MobileNav} ${mobileMenuOpen ? styles.Open : ""}`}>
+      <nav className={`${styles.Nav}`}>
         <div className={styles.NavInner}>
-          <div className={styles.NavControls}>
-            <img
-              src='/PablosLogo2.png'
-              alt='x'
-              className={`${styles.Logo} ${mobileMenuOpen ? styles.Open : ""}`}
-            />
-            <div
-              className={`${styles.Burger} ${
-                mobileMenuOpen ? styles.Open : ""
-              }`}
-              onClick={() => setMobileMenuOpen((prev) => !prev)}>
-              <div className={styles.BurgerBar}></div>
-            </div>
+          <div className={`${styles.NavGroup} ${styles.NavGroup1}`}>
+            <Link href={navLinks.navLinks[0].link} onClick={handleScroll}>
+              {navLinks.navLinks[0].linkText}
+            </Link>
+            <Link href={navLinks.navLinks[1].link} onClick={handleScroll}>
+              {navLinks.navLinks[1].linkText}
+            </Link>
           </div>
-          <div
-            className={`${styles.NavLists} ${
-              mobileMenuOpen ? styles.Open : ""
-            }`}>
+          <img src='/LogoIcon4.png' alt='logo' className={`${styles.Logo}`} />
+          <div className={`${styles.NavGroup} ${styles.NavGroup2}`}>
+            <Link href={navLinks.navLinks[2].link} onClick={handleScroll}>
+              {navLinks.navLinks[2].linkText}
+            </Link>
+            <Link href={navLinks.navLinks[3].link} onClick={handleScroll}>
+              {navLinks.navLinks[3].linkText}
+            </Link>
+          </div>
+          {/* <div className={`${styles.NavLists}`}>
             <NavList handleScroll={handleScroll} links={navLinks.navLinks} />
-            <SocialsList links={navLinks.socialLinks} />
-          </div>
+          </div> */}
         </div>
+        <div className={styles.OrderOnline}>Order Online</div>
       </nav>
-      <nav className={styles.Nav}>
-        <div className={styles.NavInner}>
-          <img src='/PablosLogo2.png' alt='x' className={`${styles.Logo} `} />
-          <NavList handleScroll={handleScroll} links={navLinks.navLinks} />
-          <SocialsList links={navLinks.socialLinks} />
-        </div>
-      </nav>
+
       <section className={styles.Home} id='Home'>
         <div className={styles.Hero}>
           <div className={styles.HeroLogo}>
-            <img src='/LogoIcon2.png' alt='' />
-            {/* <h1>Welcome to Pablo&apos;s</h1> */}
+            <img src='/PablosLogo3.png' alt='' />
+            <h2>Where everybody knows your name.</h2>
           </div>
-          <img src='/salad-hero.jpg' alt='' className={styles.HeroImage} />
+          <img src={pageData.heroImage} alt='x' className={styles.HeroImage} />
         </div>
       </section>
 
@@ -117,40 +110,47 @@ export default function Home({ pageData, menuCategories, navLinks }) {
       <section className={styles.Info}>
         <div className={styles.Grid}>
           <div className={styles.GridItem}>
-            <img src={pageData.gridImages[0]} alt='' />
+            <div className={styles.GridItemInner}>
+              <span>
+                Delight yourself in our specialyy coffee, crafted with care from
+                local sourced beans, and savor our exquisite blends.
+              </span>
+            </div>
           </div>
           <div className={styles.GridItem}>
-            <div className={styles.GridItemInner}>
-              <h2>Hours</h2>
-              <span>Mon - Fri // 9:00am - 11:00pm</span>
-              <span>Sat // 10:00am - 1:00am</span>
-              <span>Sun // CLOSED</span>
-            </div>
+            <img src={pageData.gridImages[0]} alt='' />
           </div>
           <div className={styles.GridItem}>
             <img src={pageData.gridImages[1]} alt='' />
           </div>
-          <div className={styles.GridItem}>
-            <img src={pageData.gridImages[2]} alt='' />
-          </div>
+
           <div className={styles.GridItem}>
             <div className={styles.GridItemInner}>
-              <h2>Reservations</h2>
-              <span>Reservation Numbers:</span>
-              <span>+123 456 7891</span>
-              <span>+123 456 7891</span>
+              <span>
+                Enjoy the rich and comforting flavors of our food menu made
+                fresh, expertly prepared to satisfy your cravings and warm your
+                soul.
+              </span>
             </div>
           </div>
           <div className={styles.GridItem}>
-            <img src={pageData.gridImages[3]} alt='' />
+            <div className={styles.GridItemInner}>
+              <span>Experience the enticing allur of our seasonal drinks!</span>
+            </div>
           </div>
           <div className={styles.GridItem}>
-            <img src={pageData.gridImages[4]} alt='' />
+            <img src={pageData.gridImages[2]} alt='' />
           </div>
+          <div className={styles.GridItem} ref={mapRef} id='Contact'>
+            {/* <img src={pageData.gridImages[3]} alt='' /> */}
+          </div>
+
           <div className={styles.GridItem}>
             <div className={styles.GridItemInner}>
-              <h2>Stores</h2>
-              <span>Shops @ Don Mills</span>
+              <span>
+                Family friendly café nestled in the heart of the Shops at Don
+                Mills.
+              </span>
             </div>
           </div>
         </div>
@@ -181,12 +181,20 @@ export default function Home({ pageData, menuCategories, navLinks }) {
         ))}
       </section>
 
-      <section className={styles.Map} ref={mapRef} id='Contact'></section>
+      <section className={styles.Map}></section>
 
-      <section className={styles.Footer}>
-        &#169; 2023 Pablo&apos;s Coffee House{" "}
-        <SocialsList links={navLinks.socialLinks} />
-      </section>
+      <footer className={styles.Footer}>
+        <div className={styles.FooterMain}>
+          <div className={styles.FooterNav}>
+            <img src='PablosLogo3.png' alt='' />
+            {navLinks.navLinks.map((link, idx) => (
+              <div key={idx}>{link.linkText}</div>
+            ))}
+          </div>
+          <SocialsList links={navLinks.socialLinks} />
+        </div>
+        <span>&#169; 2023 Pablo&apos;s Coffee House</span>
+      </footer>
     </>
   );
 }
@@ -197,6 +205,7 @@ export async function getStaticProps(context) {
     aboutText,
     menuHeading,
     menuSubHeading,
+    "heroImage": heroImage.asset->url,
     "gridImages": gridImages[].asset->url
 
   }`);
