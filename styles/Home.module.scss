@@ -335,9 +335,9 @@
 
   .Info {
     .Grid {
-      grid-template-columns: repeat(1, 1fr);
-      //   grid-template-rows: repeat(8, 1fr);
-      grid-template-rows: 0;
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(8, 1fr);
+      // grid-template-rows: unset;
 
       .GridItemInner {
         padding-block: 2rem;
