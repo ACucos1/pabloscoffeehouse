@@ -122,31 +122,6 @@ export default function Home({ pageData, menuCategories, navLinks }) {
         </div>
       </section>
 
-      <section className={styles.Menu}>
-        <h1>{pageData.menuHeading}</h1>
-        <p>{pageData.menuSubHeading}</p>
-        {menuCategories.map((category, idx) => (
-          <div key={idx}>
-            <h2 id={category.title.toLowerCase()}>{category.title}</h2>
-            <div className={styles.FoodMenu}>
-              {category.items.map((item, idx) => (
-                <div key={idx} className={styles.MenuItem}>
-                  <img src={item.itemImage} alt='' />
-                  <div className={styles.MenuItemText}>
-                    <div className={styles.MenuItemTitle}>
-                      <h3>{item.itemName}</h3>
-                      <div className='dotted-spacer'></div>
-                    </div>
-                    <p>{item.itemDesc ?? "   "}</p>
-                  </div>
-                  <span className={styles.Price}>${item.itemPrice}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
-      </section>
-
       <section className={styles.Map}></section>
 
       <footer className={styles.Footer}>
