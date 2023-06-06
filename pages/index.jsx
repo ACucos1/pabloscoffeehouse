@@ -2,6 +2,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
+import { Navbar } from "../components/Navbar";
 import client from "../sanity/client";
 import { Loader } from "@googlemaps/js-api-loader";
 import styles from "../styles/Home.module.scss";
@@ -40,19 +41,6 @@ export default function Home({ pageData, menuCategories, navLinks }) {
     });
   }, []);
 
-  const handleScroll = (e) => {
-    const href = e.currentTarget.href;
-    if (href.match(/\#/)) e.preventDefault();
-
-    const targetId = href.replace(/.*\#/, "");
-
-    const elem = document.getElementById(targetId);
-
-    elem?.scrollIntoView({
-      behavior: "smooth",
-    });
-  };
-
   useEffect(() => {
     console.log(navLinks);
   }, []);
@@ -65,31 +53,7 @@ export default function Home({ pageData, menuCategories, navLinks }) {
         <meta name='description' content='Artisan Coffee & Pastries' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <nav className={`${styles.Nav}`}>
-        <div className={styles.NavInner}>
-          <div className={`${styles.NavGroup} ${styles.NavGroup1}`}>
-            <Link href={navLinks.navLinks[0].link} onClick={handleScroll}>
-              {navLinks.navLinks[0].linkText}
-            </Link>
-            <Link href={navLinks.navLinks[1].link} onClick={handleScroll}>
-              {navLinks.navLinks[1].linkText}
-            </Link>
-          </div>
-          <img src='/LogoIcon4.png' alt='logo' className={`${styles.Logo}`} />
-          <div className={`${styles.NavGroup} ${styles.NavGroup2}`}>
-            <Link href={navLinks.navLinks[2].link} onClick={handleScroll}>
-              {navLinks.navLinks[2].linkText}
-            </Link>
-            <Link href={navLinks.navLinks[3].link} onClick={handleScroll}>
-              {navLinks.navLinks[3].linkText}
-            </Link>
-          </div>
-        </div>
-        <div className={styles.OrderOnline}>
-          <span>Order Online</span>
-          <img src='order-online.svg' alt='' />
-        </div>
-      </nav>
+      <Navbar navLinks={navLinks} />
 
       <section className={styles.Home} id='Home'>
         <div className={styles.Hero}>
@@ -211,6 +175,7 @@ export async function getStaticProps(context) {
     "gridImages": gridImages[].asset->url
 
   }`);
+
   const menuCategories = await client.fetch(`*[_type=="menuCategory"] {
     "title": title,
     "items": menuItems[]-> {
