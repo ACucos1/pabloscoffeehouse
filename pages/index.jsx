@@ -41,9 +41,9 @@ export default function Home({ pageData, menuCategories, navLinks }) {
   }, []);
 
   const handleScroll = (e) => {
-    e.preventDefault();
-
     const href = e.currentTarget.href;
+    if (href.match(/\#/)) e.preventDefault();
+
     const targetId = href.replace(/.*\#/, "");
 
     const elem = document.getElementById(targetId);
@@ -84,11 +84,11 @@ export default function Home({ pageData, menuCategories, navLinks }) {
               {navLinks.navLinks[3].linkText}
             </Link>
           </div>
-          {/* <div className={`${styles.NavLists}`}>
-            <NavList handleScroll={handleScroll} links={navLinks.navLinks} />
-          </div> */}
         </div>
-        <div className={styles.OrderOnline}>Order Online</div>
+        <div className={styles.OrderOnline}>
+          <span>Order Online</span>
+          <img src='order-online.svg' alt='' />
+        </div>
       </nav>
 
       <section className={styles.Home} id='Home'>
@@ -135,7 +135,9 @@ export default function Home({ pageData, menuCategories, navLinks }) {
           </div>
           <div className={styles.GridItem}>
             <div className={styles.GridItemInner}>
-              <span>Experience the enticing allur of our seasonal drinks!</span>
+              <span>
+                Experience the enticing allure of our seasonal drinks!
+              </span>
             </div>
           </div>
           <div className={styles.GridItem}>

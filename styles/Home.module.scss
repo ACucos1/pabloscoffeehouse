@@ -43,8 +43,23 @@
         // background-color: blue;
         // text-align: center;
         // margin: auto;
-        width: 100%;
+        // width: 100%;
         margin-inline: 1rem;
+        position: relative;
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 0;
+          background-color: #bab86c;
+          height: 2px;
+          transition: width 0.3s ease;
+        }
+
+        &:hover::after {
+          width: 100%;
+        }
       }
     }
 
@@ -73,14 +88,42 @@
     width: 80px;
     height: 80px;
     border-radius: 12px;
-    background-color: rgb(133, 184, 66);
+    background-color: #bab86c;
     opacity: 0.8;
-    backdrop-filter: blur(8px);
     text-align: center;
     display: flex;
     align-items: center;
+    justify-content: center;
     top: 0;
     right: -100px;
+    transition: width 0.3s ease, right 0.3s ease;
+
+    img {
+      height: 40%;
+      width: 40%;
+      transition: opacity 0.3s ease;
+    }
+
+    span {
+      position: absolute;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      color: black;
+      font-weight: 500;
+    }
+
+    &:hover {
+      cursor: pointer;
+      width: 160px;
+      right: -180px;
+      img {
+        opacity: 0;
+      }
+
+      span {
+        opacity: 1;
+      }
+    }
   }
 }
 
@@ -155,10 +198,33 @@
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(4, 1fr);
     width: 100%;
-    background-color: var(--color-secondary);
+    // background-color: var(--color-secondary);
     .GridItem {
       text-align: center;
       width: 100%;
+
+      &:first-child {
+        background-color: #3c2b1f;
+        background-image: url(../public/Fingerprint.png);
+        background-size: contain;
+        // mix-blend-mode: overlay;
+        background-blend-mode: soft-light;
+      }
+
+      &:nth-child(4) {
+        background-color: #f3e3cf;
+        color: #22120b;
+      }
+
+      &:nth-child(5) {
+        background-color: #efecea;
+        color: #3c2b1f;
+      }
+
+      &:nth-child(8) {
+        background-color: #ffc599;
+        color: #22120b;
+      }
 
       .GridItemInner {
         width: 100%;
@@ -247,13 +313,13 @@
 
 .Footer {
   height: 300px;
-  background-color: var(--color-quartiary);
+  background-color: #22120b;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 3rem;
   width: 100%;
-  color: var(--color-ternary);
+  // color: var(--color-ternary);
   .FooterMain {
     width: 100%;
     display: flex;
