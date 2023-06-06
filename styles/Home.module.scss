@@ -22,9 +22,6 @@
     background-color: #fff;
     opacity: 0.8;
     border-radius: 12px;
-    // display: flex;
-    // align-items: center;
-    // justify-content: space-evenly;
     font-size: 20px;
     font-weight: 500;
     text-transform: uppercase;
@@ -36,16 +33,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      // background-color: red;
       justify-content: center;
 
       a {
-        // background-color: blue;
-        // text-align: center;
-        // margin: auto;
-        // width: 100%;
         margin-inline: 1rem;
         position: relative;
+
         &::after {
           content: "";
           position: absolute;
@@ -58,6 +51,10 @@
         }
 
         &:hover::after {
+          width: 100%;
+        }
+
+        &.Selected::after {
           width: 100%;
         }
       }
