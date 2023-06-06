@@ -55,7 +55,8 @@ export default function menu({ menuCategories, navLinks }) {
 }
 
 export async function getStaticProps(context) {
-  const menuCategories = await client.fetch(`*[_type=="menuCategory"] {
+  const menuCategories =
+    await client.fetch(`*[_type=="menuCategory"] | order(dateTime(_createdAt) asc) {
     "title": title,
     "items": menuItems[]-> {
       itemName,
