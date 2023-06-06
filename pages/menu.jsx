@@ -37,7 +37,7 @@ export default function menu({ menuCategories, navLinks }) {
                                 ? fullSizes[idx]
                                 : icedSizes[idx]}
                             </span>
-                          )}
+                          )}{" "}
                           ${parseFloat(price).toFixed(2)}
                         </div>
                       ))}
@@ -65,8 +65,6 @@ export async function getStaticProps(context) {
       "itemImage": itemImage.asset->url
     }
   }`);
-
-  console.log(menuCategories[0].items[0]);
 
   const navLinks = await client.fetch(`*[_type == "navLinks"][0] {
     "navLinks": links,
