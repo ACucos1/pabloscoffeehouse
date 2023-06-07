@@ -61,13 +61,41 @@ ul {
   background-repeat: repeat-x;
 }
 
+/* Page Transiton */
+.transition-component {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: 100%;
+}
+
+.page-enter {
+  opacity: 0;
+}
+
+.page-enter-done {
+  opacity: 1;
+  transition: opacity 0.3s linear;
+}
+
+.page-exit {
+  opacity: 1;
+}
+
+.page-exit-active {
+  opacity: 0;
+  transition: opacity 0.3s linear;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
+    background-color: #fff;
   }
   body {
-    color: white;
-    background: black;
+    // color: white;
+    // background: black;
   }
 }
 

@@ -11,9 +11,11 @@
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.15.1",
     "@sanity/client": "^6.1.2",
+    "gsap": "^3.12.1",
     "next": "13.4.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-transition-group": "^4.4.5",
     "sass": "^1.62.1"
   },
   "devDependencies": {

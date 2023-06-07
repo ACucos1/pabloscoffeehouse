@@ -2,9 +2,14 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import styles from "../styles/Home.module.scss";
+import { gsap } from "gsap";
+import { useEffect, useRef } from "react";
 
 export const Navbar = ({ navLinks }) => {
   const router = useRouter();
+  const animationRef = useRef();
+  const { current: tl } = useRef(gsap.timeline({ paused: true }));
+
   const handleClick = (e) => {
     const href = e.currentTarget.href;
     if (href.match(/\#/) && router.asPath !== "/") e.preventDefault();
@@ -18,12 +23,19 @@ export const Navbar = ({ navLinks }) => {
     });
   };
 
+  useEffect(() => {
+    const nav = animationRef.current;
+    tl.to(nav, { top: 0, autoAlpha: 1, duration: 0.5, delay: 0.5 });
+    tl.play();
+  }, [tl]);
+
   return (
-    <nav className={`${styles.Nav}`}>
+    <nav className={`${styles.Nav}`} ref={animationRef}>
       <div className={styles.NavInner}>
         <div className={`${styles.NavGroup} ${styles.NavGroup1}`}>
           <Link
             href={navLinks.navLinks[0].link}
+            scroll={false}
             onClick={handleClick}
             className={
               navLinks.navLinks[0].link == router.asPath ? styles.Selected : ""
@@ -32,6 +44,7 @@ export const Navbar = ({ navLinks }) => {
           </Link>
           <Link
             href={navLinks.navLinks[1].link}
+            scroll={false}
             onClick={handleClick}
             className={
               navLinks.navLinks[1].link == router.asPath ? styles.Selected : ""
@@ -43,6 +56,7 @@ export const Navbar = ({ navLinks }) => {
         <div className={`${styles.NavGroup} ${styles.NavGroup2}`}>
           <Link
             href={navLinks.navLinks[2].link}
+            scroll={false}
             onClick={handleClick}
             className={
               navLinks.navLinks[2].link == router.asPath ? styles.Selected : ""
@@ -51,6 +65,7 @@ export const Navbar = ({ navLinks }) => {
           </Link>
           <Link
             href={navLinks.navLinks[3].link}
+            scroll={false}
             onClick={handleClick}
             className={
               navLinks.navLinks[3].link == router.asPath ? styles.Selected : ""
