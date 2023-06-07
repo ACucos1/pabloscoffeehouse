@@ -1,10 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
-import Head from "next/head";
-import Link from "next/link";
-import { useState, useEffect, useRef } from "react";
-import { Navbar } from "../components/Navbar";
-import client from "../sanity/client";
 import { Loader } from "@googlemaps/js-api-loader";
+import Head from "next/head";
+import { useEffect, useRef, useState } from "react";
+import { Navbar } from "../components/Navbar";
+import { SocialsList } from "../components/SocialsList";
+import client from "../sanity/client";
 import styles from "../styles/Home.module.scss";
 
 const GOOGLE_MAPS_API_KEY = "AIzaSyBY-wvD3hJfZXZ2w5HaH4VtePd_k6Mf2ow";
@@ -174,40 +174,3 @@ export async function getStaticProps(context) {
     },
   };
 }
-
-const NavList = ({ handleScroll, links }) => (
-  <ul className={styles.NavList}>
-    {links.map((link, idx) => (
-      <li key={idx}>
-        <Link href={link.link} onClick={handleScroll}>
-          {link.linkText}
-        </Link>
-      </li>
-    ))}
-  </ul>
-);
-
-const SocialsList = ({ links }) => (
-  <ul className={styles.Socials}>
-    {/* <li>
-      <Link href=''>
-        <img src='instagram.svg' alt='' />
-      </Link>
-    </li>
-    <li>
-      <Link href=''>
-        <img src='facebook-f.svg' alt='' />
-      </Link>
-    </li> */}
-    {links.map((link, idx) => (
-      <li key={idx}>
-        <Link href={link.link ?? ""}>
-          <img
-            src={`${link.linkText.toLowerCase()}.svg`}
-            alt={`${link.linkText}`}
-          />
-        </Link>
-      </li>
-    ))}
-  </ul>
-);

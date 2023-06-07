@@ -1,0 +1,75 @@
+.About {
+  color: #22120b;
+  background-color: #fff;
+  text-align: center;
+
+  h2 {
+    margin-block-start: 5rem;
+  }
+
+  .Header {
+    height: 400px;
+    background-color: #bab86c;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    background-image: url("../public/Fingerprint sideways.png");
+    background-blend-mode: soft-light;
+    background-size: cover;
+    // background-position:;
+
+    h2 {
+      font-size: 64px;
+      font-weight: 350;
+      margin-block-end: 5rem;
+    }
+  }
+
+  .Body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+
+    .BodyInner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 80%;
+      img {
+        width: 50%;
+      }
+
+      & > * {
+        width: 40%;
+        margin: auto;
+        text-align: left;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 825px) {
+  .About {
+    .Body {
+      .BodyInner {
+        flex-direction: column;
+        width: 100%;
+
+        img {
+          width: 80%;
+        }
+
+        & > * {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .About {
+  }
+}

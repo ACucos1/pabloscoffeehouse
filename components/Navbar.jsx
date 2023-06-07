@@ -26,7 +26,7 @@ export const Navbar = ({ navLinks }) => {
             href={navLinks.navLinks[0].link}
             onClick={handleClick}
             className={
-              navLinks.navLinks[0].link == router.asPath && styles.Selected
+              navLinks.navLinks[0].link == router.asPath ? styles.Selected : ""
             }>
             {navLinks.navLinks[0].linkText}
           </Link>
@@ -34,7 +34,7 @@ export const Navbar = ({ navLinks }) => {
             href={navLinks.navLinks[1].link}
             onClick={handleClick}
             className={
-              navLinks.navLinks[1].link == router.asPath && styles.Selected
+              navLinks.navLinks[1].link == router.asPath ? styles.Selected : ""
             }>
             {navLinks.navLinks[1].linkText}
           </Link>
@@ -45,7 +45,7 @@ export const Navbar = ({ navLinks }) => {
             href={navLinks.navLinks[2].link}
             onClick={handleClick}
             className={
-              navLinks.navLinks[2].link == router.asPath && styles.Selected
+              navLinks.navLinks[2].link == router.asPath ? styles.Selected : ""
             }>
             {navLinks.navLinks[2].linkText}
           </Link>
@@ -53,7 +53,7 @@ export const Navbar = ({ navLinks }) => {
             href={navLinks.navLinks[3].link}
             onClick={handleClick}
             className={
-              navLinks.navLinks[3].link == router.asPath && styles.Selected
+              navLinks.navLinks[3].link == router.asPath ? styles.Selected : ""
             }>
             {navLinks.navLinks[3].linkText}
           </Link>

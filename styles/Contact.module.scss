@@ -1,0 +1,98 @@
+.Contact {
+  color: #22120b;
+  background-color: #fff;
+  text-align: center;
+
+  h2 {
+    margin-block-start: 5rem;
+  }
+
+  .Header {
+    height: 400px;
+    background-color: #bab86c;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    background-image: url("../public/Fingerprint sideways.png");
+    background-blend-mode: soft-light;
+    background-size: cover;
+    // background-position:;
+
+    h2 {
+      font-size: 64px;
+      font-weight: 350;
+      margin-block-end: 5rem;
+    }
+  }
+
+  .Body {
+    padding: 3rem;
+
+    .BodyInner {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+
+      .MapWrapper {
+        width: 50%;
+        .Map {
+          height: 400px;
+          width: 100%;
+        }
+      }
+
+      .ContactInfo {
+        text-align: left;
+        // margin: auto;
+        // width: 50%;
+        span {
+          font-size: 34px;
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .Contact {
+    .Body {
+      .BodyInner {
+        flex-direction: column;
+
+        .MapWrapper {
+          width: 100%;
+        }
+
+        .ContactInfo {
+          span {
+            font-size: 24px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 525px) {
+  .Contact {
+    .Body {
+      padding: 1rem;
+      .BodyInner {
+        flex-direction: column;
+
+        .MapWrapper {
+          width: 100%;
+        }
+
+        .ContactInfo {
+          span {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}
