@@ -13,7 +13,7 @@ const loader = new Loader({
   version: "weekly",
 });
 
-export default function Contact({ menuCategories, navLinks }) {
+export default function Contact({ contactInfo, navLinks }) {
   const mapRef = useRef();
   useEffect(() => {
     let map;
@@ -43,7 +43,7 @@ export default function Contact({ menuCategories, navLinks }) {
       <Navbar navLinks={navLinks} />
       <section className={styles.Contact}>
         <div className={styles.Header}>
-          <h2>Contact Us</h2>
+          <h2>{contactInfo.pageHeader}</h2>
         </div>
         <div className={styles.Body}>
           <div className={styles.BodyInner}>
@@ -53,9 +53,9 @@ export default function Contact({ menuCategories, navLinks }) {
             </div>
             <div className={styles.ContactInfo}>
               <span>
-                <strong>+1</strong> (416) 123 456
+                (<strong>+1</strong>) {contactInfo.phoneNumber}
               </span>
-              <span>hello@pabloscoffeehouse.com</span>
+              <span>{contactInfo.email}</span>
             </div>
           </div>
         </div>
@@ -66,26 +66,21 @@ export default function Contact({ menuCategories, navLinks }) {
 }
 
 export async function getStaticProps(context) {
-  const menuCategories =
-    await client.fetch(`*[_type=="menuCategory"] | order(dateTime(_createdAt) asc) {
-    "title": title,
-    "items": menuItems[]-> {
-      itemName,
-      itemPrice,
-      itemDesc,
-      "itemImage": itemImage.asset->url
-    }
-  }`);
-
   const navLinks = await client.fetch(`*[_type == "navLinks"][0] {
     "navLinks": links,
     "socialLinks": socialLnks
   }`);
 
+  const contactInfo = await client.fetch(`*[_type == "contactPage"][0]{
+    pageHeader,
+    phoneNumber,
+    email,
+  }`);
+
   return {
     props: {
       navLinks,
-      menuCategories,
+      contactInfo,
     },
   };
 }
