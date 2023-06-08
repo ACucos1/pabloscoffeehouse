@@ -50,7 +50,11 @@ export default function Home({ pageData, menuCategories, navLinks }) {
     <>
       <Head>
         <title>{pageData.siteName}</title>
-        <meta name='description' content='Artisan Coffee & Pastries' />
+        <meta
+          name='description'
+          content='A family owned Mediterranean café nestled in the heart of the Shops at Don Mills.
+Sample our exquisite blends, fine pastries, and refreshing iced drinks.'
+        />
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Navbar navLinks={navLinks} />
@@ -76,8 +80,8 @@ export default function Home({ pageData, menuCategories, navLinks }) {
           <div className={styles.GridItem}>
             <div className={styles.GridItemInner}>
               <span>
-                Delight yourself in our specialyy coffee, crafted with care from
-                local sourced beans, and savor our exquisite blends.
+                Delight yourself in our specialty coffee, crafted with care from
+                local sourced beans, and savour our exquisite blends.
               </span>
             </div>
           </div>
@@ -114,8 +118,8 @@ export default function Home({ pageData, menuCategories, navLinks }) {
           <div className={styles.GridItem}>
             <div className={styles.GridItemInner}>
               <span>
-                Family friendly café nestled in the heart of the Shops at Don
-                Mills.
+                Come visit our family friendly café nestled in the heart of the
+                Shops at Don Mills.
               </span>
             </div>
           </div>
