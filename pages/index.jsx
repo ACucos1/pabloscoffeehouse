@@ -79,10 +79,7 @@ Sample our exquisite blends, fine pastries, and refreshing iced drinks.'
         <div className={styles.Grid}>
           <div className={styles.GridItem}>
             <div className={styles.GridItemInner}>
-              <span>
-                Delight yourself in our specialty coffee, crafted with care from
-                local sourced beans, and savour our exquisite blends.
-              </span>
+              <span>{pageData.gridText[0]}</span>
             </div>
           </div>
           <div className={styles.GridItem}>
@@ -94,18 +91,12 @@ Sample our exquisite blends, fine pastries, and refreshing iced drinks.'
 
           <div className={styles.GridItem}>
             <div className={styles.GridItemInner}>
-              <span>
-                Enjoy the rich and comforting flavors of our food menu made
-                fresh, expertly prepared to satisfy your cravings and warm your
-                soul.
-              </span>
+              <span>{pageData.gridText[1]}</span>
             </div>
           </div>
           <div className={styles.GridItem}>
             <div className={styles.GridItemInner}>
-              <span>
-                Experience the enticing allure of our seasonal drinks!
-              </span>
+              <span>{pageData.gridText[2]}</span>
             </div>
           </div>
           <div className={styles.GridItem}>
@@ -117,10 +108,7 @@ Sample our exquisite blends, fine pastries, and refreshing iced drinks.'
 
           <div className={styles.GridItem}>
             <div className={styles.GridItemInner}>
-              <span>
-                Come visit our family friendly café nestled in the heart of the
-                Shops at Don Mills.
-              </span>
+              <span>{pageData.gridText[3]}</span>
             </div>
           </div>
         </div>
@@ -151,8 +139,8 @@ export async function getStaticProps(context) {
     menuHeading,
     menuSubHeading,
     "heroImage": heroImage.asset->url,
-    "gridImages": gridImages[].asset->url
-
+    "gridImages": gridImages[].asset->url,
+    gridText[]
   }`);
 
   const menuCategories = await client.fetch(`*[_type=="menuCategory"] {
