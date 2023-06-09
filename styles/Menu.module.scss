@@ -63,9 +63,12 @@
 
       .Price {
         font-weight: 700;
+        font-size: 18px;
         flex: 1;
         text-align: right;
-        // margin-bottom: 2rem;
+        .PriceNum {
+          border-bottom: 1px dotted #22120b;
+        } // margin-bottom: 2rem;
 
         .Size {
           font-weight: 350;

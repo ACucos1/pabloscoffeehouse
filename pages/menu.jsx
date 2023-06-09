@@ -28,7 +28,7 @@ export default function menu({ menuCategories, navLinks }) {
                       </div>
                       <p>{item.itemDesc ?? "   "}</p>
                     </div>
-                    <span className={styles.Price}>
+                    <div className={styles.Price}>
                       {item.itemPrice.map((price, idx) => (
                         <div key={idx}>
                           {item.itemPrice.length > 1 && (
@@ -38,10 +38,12 @@ export default function menu({ menuCategories, navLinks }) {
                                 : icedSizes[idx]}
                             </span>
                           )}{" "}
-                          ${parseFloat(price).toFixed(2)}
+                          <span className={styles.PriceNum}>
+                            ${parseFloat(price).toFixed(2)}
+                          </span>
                         </div>
                       ))}
-                    </span>
+                    </div>
                   </div>
                 ))}
               </div>
