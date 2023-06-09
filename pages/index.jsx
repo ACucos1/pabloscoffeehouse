@@ -41,11 +41,6 @@ export default function Home({ pageData, menuCategories, navLinks }) {
     });
   }, []);
 
-  useEffect(() => {
-    console.log(navLinks);
-  }, []);
-
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   return (
     <>
       <Head>
@@ -62,10 +57,14 @@ Sample our exquisite blends, fine pastries, and refreshing iced drinks.'
       <section className={styles.Home} id='Home'>
         <div className={styles.Hero}>
           <div className={styles.HeroLogo}>
-            <img src='/PablosLogo3.png' alt='' />
+            <img src='/PablosLogo3.png' alt='Pablos Coffee House' />
             <h2>Where everybody knows your name.</h2>
           </div>
-          <img src={pageData.heroImage} alt='x' className={styles.HeroImage} />
+          <img
+            src={pageData.heroImage}
+            alt='background image'
+            className={styles.HeroImage}
+          />
         </div>
       </section>
 
@@ -105,7 +104,6 @@ Sample our exquisite blends, fine pastries, and refreshing iced drinks.'
           <div className={styles.GridItem} ref={mapRef} id='Contact'>
             {/* <img src={pageData.gridImages[3]} alt='' /> */}
           </div>
-
           <div className={styles.GridItem}>
             <div className={styles.GridItemInner}>
               <span>{pageData.gridText[3]}</span>

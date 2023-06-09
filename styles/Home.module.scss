@@ -197,11 +197,12 @@
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(4, 1fr);
     width: 100%;
+
     // background-color: var(--color-secondary);
     .GridItem {
       text-align: center;
       width: 100%;
-
+      font-weight: 500;
       &:first-child {
         background-color: #3c2b1f;
         background-image: url(../public/Fingerprint.png);
