@@ -69,6 +69,8 @@
         .ContactInfo {
           span {
             font-size: 24px;
+            border-bottom: 1px dotted brown;
+            margin: 1rem;
           }
         }
       }
@@ -92,6 +94,20 @@
             font-size: 24px;
             border-bottom: 1px dotted brown;
             margin: 1rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .Contact {
+    .Body {
+      .BodyInner {
+        .ContactInfo {
+          span {
+            font-size: 16px;
           }
         }
       }
