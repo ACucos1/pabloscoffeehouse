@@ -37,7 +37,7 @@ export const Navbar = ({ navLinks }) => {
             {navLinks.navLinks[1].linkText}
           </Link>
         </div>
-        <img src='/LogoIcon5.png' alt='logo' className={`${styles.Logo}`} />
+        <img src='/pablos-logo.svg' alt='logo' className={`${styles.Logo}`} />
         <div className={`${styles.NavGroup} ${styles.NavGroup2}`}>
           <Link
             href={navLinks.navLinks[2].link}
