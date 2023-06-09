@@ -10,19 +10,6 @@ export const Navbar = ({ navLinks }) => {
   const animationRef = useRef();
   const { current: tl } = useRef(gsap.timeline({ paused: true }));
 
-  const handleClick = (e) => {
-    const href = e.currentTarget.href;
-    if (href.match(/\#/) && router.asPath !== "/") e.preventDefault();
-
-    const targetId = href.replace(/.*\#/, "");
-
-    const elem = document.getElementById(targetId);
-
-    elem?.scrollIntoView({
-      behavior: "smooth",
-    });
-  };
-
   useEffect(() => {
     const nav = animationRef.current;
     tl.to(nav, { top: 0, autoAlpha: 1, duration: 0.5, delay: 0.5 });
@@ -36,7 +23,6 @@ export const Navbar = ({ navLinks }) => {
           <Link
             href={navLinks.navLinks[0].link}
             scroll={false}
-            onClick={handleClick}
             className={
               navLinks.navLinks[0].link == router.asPath ? styles.Selected : ""
             }>
@@ -45,7 +31,6 @@ export const Navbar = ({ navLinks }) => {
           <Link
             href={navLinks.navLinks[1].link}
             scroll={false}
-            onClick={handleClick}
             className={
               navLinks.navLinks[1].link == router.asPath ? styles.Selected : ""
             }>
@@ -57,7 +42,6 @@ export const Navbar = ({ navLinks }) => {
           <Link
             href={navLinks.navLinks[2].link}
             scroll={false}
-            onClick={handleClick}
             className={
               navLinks.navLinks[2].link == router.asPath ? styles.Selected : ""
             }>
@@ -66,7 +50,6 @@ export const Navbar = ({ navLinks }) => {
           <Link
             href={navLinks.navLinks[3].link}
             scroll={false}
-            onClick={handleClick}
             className={
               navLinks.navLinks[3].link == router.asPath ? styles.Selected : ""
             }>

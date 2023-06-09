@@ -4,8 +4,10 @@ import Head from "next/head";
 import { useEffect, useRef, useState } from "react";
 import { Navbar } from "../components/Navbar";
 import { SocialsList } from "../components/SocialsList";
+import { Footer } from "../components/Footer";
 import client from "../sanity/client";
 import styles from "../styles/Home.module.scss";
+import { useRouter } from "next/router";
 
 const GOOGLE_MAPS_API_KEY = "AIzaSyBY-wvD3hJfZXZ2w5HaH4VtePd_k6Mf2ow";
 
@@ -16,6 +18,7 @@ const loader = new Loader({
 
 export default function Home({ pageData, menuCategories, navLinks }) {
   const mapRef = useRef();
+  const router = useRouter();
 
   // Google Maps init
   useEffect(() => {
@@ -114,18 +117,7 @@ Sample our exquisite blends, fine pastries, and refreshing iced drinks.'
 
       <section className={styles.Map}></section>
 
-      <footer className={styles.Footer}>
-        <div className={styles.FooterMain}>
-          <div className={styles.FooterNav}>
-            <img src='PablosLogo3.png' alt='' />
-            {navLinks.navLinks.map((link, idx) => (
-              <div key={idx}>{link.linkText}</div>
-            ))}
-          </div>
-          <SocialsList links={navLinks.socialLinks} />
-        </div>
-        <span>&#169; 2023 Pablo&apos;s Coffee House</span>
-      </footer>
+      <Footer navLinks={navLinks} />
     </>
   );
 }
