@@ -71,12 +71,6 @@ Sample our exquisite blends, fine pastries, and refreshing iced drinks.'
         </div>
       </section>
 
-      <section className={styles.About} id='About'>
-        <img src='LogoIcon3.png' alt='' />
-        <h1>About Pablo&apos;s</h1>
-        <p>{pageData.aboutText ?? ""}</p>
-      </section>
-
       <section className={styles.Info}>
         <div className={styles.Grid}>
           <div className={styles.GridItem}>
