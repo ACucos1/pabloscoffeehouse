@@ -6,7 +6,7 @@ export const SocialsList = ({ links }) => {
     <ul className={styles.Socials}>
       {links.map((link, idx) => (
         <li key={idx}>
-          <Link href={link.link ?? ""}>
+          <Link href={link.link ?? ""} target='_blank'>
             <img
               src={`${link.linkText.toLowerCase()}.svg`}
               alt={`${link.linkText}`}
