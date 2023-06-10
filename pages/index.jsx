@@ -8,6 +8,7 @@ import { Footer } from "../components/Footer";
 import client from "../sanity/client";
 import styles from "../styles/Home.module.scss";
 import { useRouter } from "next/router";
+import { gsap } from "gsap";
 
 const GOOGLE_MAPS_API_KEY = "AIzaSyBY-wvD3hJfZXZ2w5HaH4VtePd_k6Mf2ow";
 
@@ -18,7 +19,18 @@ const loader = new Loader({
 
 export default function Home({ pageData, menuCategories, navLinks }) {
   const mapRef = useRef();
+  const scrollArrowRef = useRef();
   const router = useRouter();
+  const { current: tl } = useRef(gsap.timeline({ paused: true, repeat: -1 }));
+
+  useEffect(() => {
+    const scrollArrow = scrollArrowRef.current;
+    tl.to(scrollArrow, { y: 25, duration: 1 }).to(scrollArrow, {
+      y: 0,
+      duration: 1,
+    });
+    tl.play();
+  }, [tl]);
 
   // Google Maps init
   useEffect(() => {
@@ -72,6 +84,7 @@ Sample our exquisite blends, fine pastries, and refreshing iced drinks.'
             className={styles.ScrollArrow}
             src='scroll_arrow.svg'
             alt='scroll down'
+            ref={scrollArrowRef}
           />
         </div>
       </section>
