@@ -167,6 +167,12 @@
       //   object-position: center;
       width: 100%;
     }
+
+    .ScrollArrow {
+      position: absolute;
+      bottom: 25px;
+      animation: float 3s linear infinite;
+    }
   }
 }
 
@@ -425,5 +431,19 @@
         max-height: 80px;
       }
     }
+  }
+}
+
+@keyframes float {
+  0% {
+    margin-bottom: 35px;
+  }
+
+  50% {
+    margin-bottom: 25px;
+  }
+
+  100% {
+    margin-bottom: 35px;
   }
 }

@@ -68,6 +68,11 @@ Sample our exquisite blends, fine pastries, and refreshing iced drinks.'
             alt='background image'
             className={styles.HeroImage}
           />
+          <img
+            className={styles.ScrollArrow}
+            src='scroll_arrow.svg'
+            alt='scroll down'
+          />
         </div>
       </section>
 
