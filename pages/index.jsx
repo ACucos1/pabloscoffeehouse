@@ -137,7 +137,6 @@ Sample our exquisite blends, fine pastries, and refreshing iced drinks.'
 export async function getStaticProps(context) {
   const pageData = await client.fetch(`*[_type=="mainPage"][0]{
     siteName,
-    aboutText,
     menuHeading,
     menuSubHeading,
     "heroImage": heroImage.asset->url,
