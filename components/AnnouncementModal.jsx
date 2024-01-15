@@ -3,6 +3,7 @@ import styles from "../styles/AnnouncementModal.module.scss";
 
 export default function AnnouncementModal() {
   const [open, setOpen] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const handleFormSubmit = (e) => {
     const form = e.target;
@@ -16,6 +17,11 @@ export default function AnnouncementModal() {
       body: new URLSearchParams(formData).toString(),
     });
     e.preventDefault();
+    setSubmitted(true);
+
+    setTimeout(() => {
+      handleModalClose();
+    }, 1000);
   };
 
   const handleModalClose = () => {
@@ -23,6 +29,7 @@ export default function AnnouncementModal() {
     localStorage.setItem("modalClosed", "true");
   };
 
+  // Don't load pop up on refresh
   useEffect(() => {
     if (!localStorage.getItem("modalClosed")) {
       setOpen(true);
@@ -59,20 +66,24 @@ export default function AnnouncementModal() {
           </p>
 
           <h3>Join our newsletter to stay up to date!</h3>
-          <form
-            action='/'
-            method='POST'
-            data-netlify='true'
-            name='newsletter-form-modal'
-            onSubmit={handleFormSubmit}>
-            <input
-              name='email'
-              type='email'
-              required
-              placeholder='Enter your email here'
-            />
-            <input type='submit' />
-          </form>
+          {!submitted ? (
+            <form
+              action='/'
+              method='POST'
+              data-netlify='true'
+              name='newsletter-form-modal'
+              onSubmit={handleFormSubmit}>
+              <input
+                name='email'
+                type='email'
+                required
+                placeholder='Enter your email here'
+              />
+              <input type='submit' />
+            </form>
+          ) : (
+            <h2>We&apos;ll be in touch!</h2>
+          )}
         </div>
       </div>
     );

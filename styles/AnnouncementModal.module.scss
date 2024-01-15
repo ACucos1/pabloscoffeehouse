@@ -35,9 +35,18 @@
         cursor: pointer;
       }
     }
+
+    h1,
+    h2 {
+      color: #5f5e37;
+    }
+
+    h2 {
+      align-self: center;
+    }
+
     h1 {
       font-size: clamp(12px, 8vw, 48px);
-      color: #5f5e37;
     }
 
     h3 {
