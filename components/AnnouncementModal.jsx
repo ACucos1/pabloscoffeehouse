@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "../styles/AnnouncementModal.module.scss";
 
 export default function AnnouncementModal() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const [submitted, setSubmitted] = useState(false);
 
   const handleFormSubmit = (e) => {
@@ -31,8 +31,8 @@ export default function AnnouncementModal() {
 
   // Don't load pop up on refresh
   useEffect(() => {
-    if (!localStorage.getItem("modalClosed")) {
-      setOpen(true);
+    if (localStorage.getItem("modalClosed")) {
+      setOpen(false);
     }
   }, [open, setOpen]);
 
