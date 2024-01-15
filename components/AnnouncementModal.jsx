@@ -36,16 +36,17 @@ export default function AnnouncementModal() {
           <button onClick={handleModalClose} className={styles.CloseBtn}>
             &#x2715;
           </button>
-          <h1>We're Moving!</h1>
+          <h1>We&apos;re Moving!</h1>
           <p>
-            We are thrilled to announce that Pablo's Coffee House is expanding
-            to a <strong>full-size unit</strong> inside the Shops at Don Mills
-            mall!
+            We are thrilled to announce that Pablo&apos;s Coffee House is
+            expanding to a <strong>full-size unit</strong> inside the Shops at
+            Don Mills mall!
           </p>
           <p>
             Our new location is situated at
-            <strong> 32 Clock Tower Road, North York, M3C0G5</strong>. We're
-            currently under construction, but we will resume operation shortly.
+            <strong> 32 Clock Tower Road, North York, M3C0G5</strong>.
+            We&apos;re currently under construction, but we will resume
+            operation shortly.
           </p>
           <p>
             <i>Thank you</i> for your continued support and loyalty. We are
