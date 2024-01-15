@@ -79,7 +79,7 @@ export default function AnnouncementModal() {
                 required
                 placeholder='Enter your email here'
               />
-              <input type='submit' />
+              <input name='submit' type='submit' />
             </form>
           ) : (
             <h2>We&apos;ll be in touch!</h2>
