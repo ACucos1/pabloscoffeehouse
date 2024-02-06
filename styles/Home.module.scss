@@ -1,37 +1,63 @@
 // Font size variables
+$font-size-small: 10px;
 $font-size-1: 12px;
 $font-size-2: 14px;
 $font-size-3: 16px;
 $font-size-h2: 20px;
-$font-size-h1: 40px;
+$font-size-h1: 36px;
 
+// Color variables
+$color-espresso: #22120B;
+$color-coffee: #3C2B1F;
+$color-latte: #B18164;
+$color-caramel: #DAAE88;
+$color-cream: #F3E3CF;
+$color-sugar: #EFECEA;
+$color-olive-dark: #424F27;
+$color-olive: #556B2F;
+$color-olive-leaf: #BAB86C;
+$color-sea-water: #468D87;
+$color-beach: #3DCABE;
+$color-peach: #FFC599;
+
+$color-text: $color-espresso;
+$color-text-light: $color-sugar;
+$color-primary: $color-coffee;
+
+$nav-width: 585px;
 .Nav {
   position: fixed;
-  // scale: 1vw;
-  // display: flex;
   width: 35%;
-  min-width: 600px;
+  width: $nav-width;
   left: 50%;
   translate: -50% 0;
   margin-top: 4rem;
-  height: 80px;
+  height: 60px;
   z-index: 1000;
+  background-color: rgba(white, 0.8);
   backdrop-filter: saturate(180%) blur(20px);
   border-radius: 12px;
   top: -30px;
+  transition: top 0.3s ease, margin 0.3s ease, border-radius 0.3s ease, width 0.3s ease;
 
   .NavInner {
+    position: relative;
     height: 100%;
-    width: 100%;
-    min-width: 600px;
+    width: $nav-width;
     margin: auto;
-    color: black;
-    background-color: rgba(#fff, 0.8);
-    border-radius: 12px;
-    font-size: $font-size-h2;
-    font-weight: 500;
+    color: $color-text;
+    font-size: $font-size-3;
+    font-weight: 700;
     text-transform: uppercase;
     padding-inline: 2rem;
+
+    .logonav2 {
+      display: none;
+      height: 40px;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
 
     .NavGroup {
       height: 100%;
@@ -48,10 +74,10 @@ $font-size-h1: 40px;
         &::after {
           content: "";
           position: absolute;
-          bottom: 0;
+          bottom: -4px;
           left: 0;
           width: 0;
-          background-color: #bab86c;
+          background-color: $color-coffee;
           height: 2px;
           transition: width 0.3s ease;
         }
@@ -79,32 +105,34 @@ $font-size-h1: 40px;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background-color: rgba(255, 255, 255, 1);
+      background-color: $color-sugar;
       border-radius: 1000px;
-      height: 140px;
-      padding: 10px;
+      height: 100px;
+      padding: 5px;
       z-index: 1;
     }
   }
   .OrderOnline {
     z-index: 1000;
     position: absolute;
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    aspect-ratio: 1/1;
     border-radius: 12px;
-    background-color: #bab86c;
+    background-color: $color-peach;
     backdrop-filter: saturate(180%) blur(20px);
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: nowrap;
+    flex-direction: row;
     top: 0;
-    right: -100px;
+    right: -75px;
     transition: width 0.3s ease, right 0.3s ease;
 
     img {
       height: 40%;
-      width: 40%;
+      aspect-ratio: 1/1;
       transition: opacity 0.3s ease;
     }
 
@@ -112,8 +140,11 @@ $font-size-h1: 40px;
       position: absolute;
       opacity: 0;
       transition: opacity 0.3s ease;
-      color: black;
-      font-weight: 500;
+      color: $color-text;
+      font-weight: 700;
+      width: 50px;
+      font-size: $font-size-small;
+      text-align: left;
     }
 
     &:hover {
@@ -129,6 +160,48 @@ $font-size-h1: 40px;
       }
     }
   }
+
+  &.scrolled {
+    top: 0;
+    margin: 0;
+    border-radius: 0;
+    width: 100%;
+
+    .Logo {
+      display: none;
+    }
+    .logonav2 {
+      display: block;
+    }
+    .NavInner {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: row;
+      width: 100%;
+      padding: 0 1rem;
+    }
+    .NavGroup {
+      float: none;
+      width: auto;
+    }
+    .OrderOnline {
+      right: 5px;
+      top: 5px;
+      width: 100px;
+      height: 50px;
+      aspect-ratio: 2/1;
+      border-radius: 5px;
+      border: 1px solid $color-caramel;
+
+      span {
+        opacity: 1;
+        position: relative;
+        display: block;
+      }
+    }
+  }
 }
 
 .Home {
@@ -139,7 +212,6 @@ $font-size-h1: 40px;
     width: 100%;
     height: 100vh;
     height: 100svh;
-    // min-height: 800px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -152,7 +224,7 @@ $font-size-h1: 40px;
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(#0000002d, 0.5);
+        background-color: rgba($color-espresso, 0.5);
         backdrop-filter: saturate(180%) blur(3px);
         mix-blend-mode: multiply;
       }
@@ -162,7 +234,6 @@ $font-size-h1: 40px;
       position: absolute;
       height: 100%;
       width: 80%;
-      //   background-color: #0000002d;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -170,6 +241,11 @@ $font-size-h1: 40px;
       img {
         max-height: 200px;
         max-width: 100%;
+        margin-top: 100px;
+
+        &.HeroLogo_mobile {
+          display: none;
+        }
       }
 
       h2 {
@@ -222,26 +298,24 @@ $font-size-h1: 40px;
     grid-template-rows: repeat(4, 1fr);
     width: 100%;
 
-    // background-color: var(--color-secondary);
     .GridItem {
       text-align: center;
       width: 100%;
       font-weight: 500;
       &:first-child {
-        background-color: #3c2b1f;
+        background-color: $color-coffee;
         background-image: url(../public/Fingerprint.png);
         background-size: contain;
-        // mix-blend-mode: overlay;
         background-blend-mode: soft-light;
       }
 
       &:nth-child(4) {
-        background-color: #f3e3cf;
+        background-color: $color-cream;
         background-image: url('../public/leaves-pattern.png');
         background-repeat: no-repeat;
         background-size: contain;
         background-blend-mode: multiply;
-        color: #22120b;
+        color: $color-text;
         overflow: hidden;
         
         span {
@@ -254,7 +328,7 @@ $font-size-h1: 40px;
             left: 0;
             width: 100%;
             height: 200%;
-            background-color: rgba(#f3e3cf, 1);
+            background-color: rgba($color-cream, 1);
             filter: blur(100px);
             transform: scale(1.5);
             z-index: -1;
@@ -263,17 +337,17 @@ $font-size-h1: 40px;
       }
 
       &:nth-child(5) {
-        background-color: #efecea;
+        background-color: $color-sugar;
         background-image: url('../public/dried-leaves.png');
         background-repeat: no-repeat;
         background-size: contain;
         background-blend-mode: soft-light;
-        color: #3c2b1f;
+        color: $color-text;
       }
 
       &:nth-child(8) {
-        background-color: #ffc599;
-        color: #22120b;
+        background-color: $color-peach;
+        color: $color-text;
       }
 
       .GridItemInner {
@@ -305,20 +379,17 @@ $font-size-h1: 40px;
 .Map {
   display: none;
   height: 450px;
-  // width: 100%;
-  background-color: #fff;
   z-index: 100;
 }
 
 .Footer {
   height: 300px;
-  background-color: #22120b;
+  background-color: $color-espresso;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 3rem;
   width: 100%;
-  // color: var(--color-ternary);
   .FooterMain {
     width: 100%;
     display: flex;
@@ -367,38 +438,71 @@ $font-size-h1: 40px;
 }
 
 @media screen and (max-width: 825px) {
+
   .Nav {
-    min-width: 500px;
-
+    top: 0;
+    margin: 0;
+    border-radius: 0;
+    width: 100%;
     .NavInner {
-      min-width: 500px;
-      font-size: 16px;
-
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: row;
+      width: 100%;
+      padding: 0 1rem;
+      .NavGroup1, .NavGroup2 {
+        float: none;
+        width: auto;
+      }
       .NavGroup {
-        width: 30%;
+        float: none;
+        width: auto;
+        a {
+          margin-inline: 0.5rem;
+        }
+      }
+      .Logo {
+        display: none;
+      }
+      .logonav2 {
+        display: block;
+        height: 30px;
+        top: 15px;
+        left: 15px;
       }
     }
-
     .OrderOnline {
-      // display: none;
-      position: relative;
-      left: 50%;
-      margin-top: 2rem;
-      translate: -50% 0;
-      justify-content: center;
-      width: 150px;
+      right: 5px;
+      top: 5px;
+      width: 100px;
       height: 50px;
+      aspect-ratio: 2/1;
+      border-radius: 5px;
+      border: 1px solid $color-caramel;
+
+      span {
+        opacity: 1;
+        position: relative;
+        display: block;
+      }
     }
   }
-  .Menu {
-    .FoodMenu {
-      flex-direction: column;
-      align-items: center;
-      //   justify-content: center;
 
-      .MenuItem {
-        width: 100%;
-      }
+  .HeroLogo {
+    img {
+      margin-top: 0 !important;
+    }
+    .HeroLogo_desktop {
+      display: none;
+    }
+    .HeroLogo_mobile {
+      display: block !important;
+      height: 185px;
+    }
+    h2 {
+      margin-block-start: 2rem !important;
     }
   }
 
@@ -424,19 +528,20 @@ $font-size-h1: 40px;
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
   .Nav {
-    margin-top: 2rem;
-    min-width: 400px;
+  
     .NavInner {
-      min-width: 400px;
-      .NavGroup {
-        a {
-          margin-inline: 0.5rem;
-        }
-      }
-      .Logo {
-        height: 100px;
+    }
+    .NavGroup {
+     display: none !important;
+    }
+    .logonav2 {
+    }
+    .OrderOnline {;
+      width: 50px !important;
+      span {
+        display: none !important;
       }
     }
   }
@@ -445,8 +550,7 @@ $font-size-h1: 40px;
     .Hero {
       .HeroLogo {
         img {
-          height: unset;
-          // width: 60%;
+          
         }
 
         h2 {
@@ -457,24 +561,6 @@ $font-size-h1: 40px;
   }
 }
 
-@media screen and (max-width: 375px) {
-  .Nav {
-    height: 60px;
-    min-width: 310px;
-    .NavInner {
-      min-width: 310px;
-      font-size: 14px;
-      .NavGroup {
-        width: 25%;
-        a {
-          margin-inline: 0;
-          margin-inline-start: 0.3rem;
-        }
-      }
+@media screen and (max-width: 430px) {
 
-      .Logo {
-        max-height: 80px;
-      }
-    }
-  }
 }

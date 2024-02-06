@@ -73,7 +73,8 @@ Sample our exquisite blends, fine pastries, and refreshing iced drinks.'
       <section className={styles.Home} id='Home'>
         <div className={styles.Hero}>
           <div className={styles.HeroLogo}>
-            <img src='/PablosLogo3.png' alt='Pablos Coffee House' />
+            <img src='/pablos-logo.svg' alt='Pablos Coffee House' className={styles.HeroLogo_desktop} />
+            <img src='/pablos-logo-icon.svg' alt='Pablos Coffee House' className={styles.HeroLogo_mobile} />
             <h2>Where everybody knows your name.</h2>
           </div>
           <video autoPlay muted loop
