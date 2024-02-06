@@ -116,7 +116,7 @@ $nav-width: 585px;
     z-index: 1000;
     position: absolute;
     width: 60px;
-    aspect-ratio: 1/1;
+    height: 60px;
     border-radius: 12px;
     background-color: $color-peach;
     text-align: center;
@@ -127,7 +127,7 @@ $nav-width: 585px;
     flex-direction: row;
     top: 0;
     right: -75px;
-    transition: width 0.3s ease, right 0.3s ease;
+    transition: width 0.3s ease, right 0.3s ease, transform 0.3s ease;
 
     img {
       height: 40%;
@@ -147,16 +147,7 @@ $nav-width: 585px;
     }
 
     &:hover {
-      cursor: pointer;
-      width: 160px;
-      right: -180px;
-      img {
-        opacity: 0;
-      }
-
-      span {
-        opacity: 1;
-      }
+      transform: scale(1.1);
     }
   }
 
@@ -178,7 +169,7 @@ $nav-width: 585px;
       align-items: center;
       justify-content: center;
       flex-direction: row;
-      width: 100%;
+      width: 800px;
       padding: 0 1rem;
     }
     .NavGroup {
@@ -530,7 +521,7 @@ $nav-width: 585px;
       align-items: center;
       justify-content: center;
       flex-direction: row;
-      width: 100%;
+      width: 100% !important;
       padding: 0 1rem;
       .NavGroup1, .NavGroup2 {
         float: none;
