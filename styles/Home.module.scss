@@ -1,3 +1,10 @@
+// Font size variables
+$font-size-1: 12px;
+$font-size-2: 14px;
+$font-size-3: 16px;
+$font-size-h2: 20px;
+$font-size-h1: 40px;
+
 .Nav {
   position: fixed;
   // scale: 1vw;
@@ -9,10 +16,8 @@
   margin-top: 4rem;
   height: 80px;
   z-index: 1000;
-  // background-color: #fff;
-  backdrop-filter: blur(8px);
-  opacity: 0;
-  // border-radius: 12px;
+  backdrop-filter: saturate(180%) blur(20px);
+  border-radius: 12px;
   top: -30px;
 
   .NavInner {
@@ -21,10 +26,9 @@
     min-width: 600px;
     margin: auto;
     color: black;
-    background-color: #fff;
-    opacity: 0.8;
+    background-color: rgba(#fff, 0.8);
     border-radius: 12px;
-    font-size: 20px;
+    font-size: $font-size-h2;
     font-weight: 500;
     text-transform: uppercase;
     padding-inline: 2rem;
@@ -74,11 +78,12 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      translate: -50% -50%;
-      height: 120px;
-      background-color: #fff;
-      outline: 10px solid white;
+      transform: translate(-50%, -50%);
+      background-color: rgba(255, 255, 255, 1);
       border-radius: 1000px;
+      height: 140px;
+      padding: 10px;
+      z-index: 1;
     }
   }
   .OrderOnline {
@@ -88,7 +93,7 @@
     height: 80px;
     border-radius: 12px;
     background-color: #bab86c;
-    opacity: 0.8;
+    backdrop-filter: saturate(180%) blur(20px);
     text-align: center;
     display: flex;
     align-items: center;
@@ -96,7 +101,6 @@
     top: 0;
     right: -100px;
     transition: width 0.3s ease, right 0.3s ease;
-    border: 3px solid #5f5e37;
 
     img {
       height: 40%;
@@ -140,6 +144,19 @@
     align-items: center;
     justify-content: center;
     position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(#0000002d, 0.5);
+        backdrop-filter: saturate(180%) blur(3px);
+        mix-blend-mode: multiply;
+      }
+
     .HeroLogo {
       text-align: center;
       position: absolute;
@@ -156,21 +173,22 @@
       }
 
       h2 {
-        font-weight: 300;
-        font-size: 40px;
+        font-weight: 100;
+        font-size: $font-size-h1;
+        line-height: calc($font-size-h1 + 1rem);
         margin-block-start: 5rem;
+        max-width: 400px;
       }
     }
     .HeroImage {
       height: 100%;
       object-fit: cover;
-      //   object-position: center;
       width: 100%;
     }
 
     .ScrollArrow {
       position: absolute;
-      bottom: 25px;
+      bottom: 50px;
     }
   }
 }
@@ -219,11 +237,37 @@
 
       &:nth-child(4) {
         background-color: #f3e3cf;
+        background-image: url('../public/leaves-pattern.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-blend-mode: multiply;
         color: #22120b;
+        overflow: hidden;
+        
+        span {
+          position: relative;
+          z-index: 1;
+          &::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: 0;
+            width: 100%;
+            height: 200%;
+            background-color: rgba(#f3e3cf, 1);
+            filter: blur(100px);
+            transform: scale(1.5);
+            z-index: -1;
+          }
+        }
       }
 
       &:nth-child(5) {
         background-color: #efecea;
+        background-image: url('../public/dried-leaves.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-blend-mode: soft-light;
         color: #3c2b1f;
       }
 
@@ -243,8 +287,10 @@
 
         span {
           display: block;
-          font-size: 24px;
-          font-weight: 300;
+          font-size: $font-size-h1;
+          font-weight: 100;
+          line-height: calc($font-size-h1 + 1rem);
+          max-width: 600px;
         }
       }
 

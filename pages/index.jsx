@@ -76,11 +76,12 @@ Sample our exquisite blends, fine pastries, and refreshing iced drinks.'
             <img src='/PablosLogo3.png' alt='Pablos Coffee House' />
             <h2>Where everybody knows your name.</h2>
           </div>
-          <img
-            src={pageData.heroImage}
-            alt='background image'
-            className={styles.HeroImage}
-          />
+          <video autoPlay muted loop
+          alt='background image'
+          className={styles.HeroImage}>
+            <source src='/cafe-video.webm' type='video/webm' />
+            <source src='/cafe-video.mp4' type='video/mp4' />
+          </video>
           <img
             className={styles.ScrollArrow}
             src='scroll_arrow.svg'

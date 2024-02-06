@@ -12,18 +12,18 @@
   .Modal {
     position: relative;
     background-color: #f3e3cf;
-    padding: 1rem;
-    border-radius: 12px;
+    padding: 3rem;
+    border-radius: 24px;
     color: black;
-    max-width: 500px;
+    max-width: 620px;
     display: flex;
     flex-direction: column;
     margin-inline: 0.5rem;
 
     .CloseBtn {
       position: absolute;
-      right: 0;
-      top: 0;
+      right: 1rem;
+      top: 1rem;
       border: none;
       background-color: transparent;
       //   padding: 1rem;
@@ -47,6 +47,7 @@
 
     h1 {
       font-size: clamp(12px, 8vw, 48px);
+      margin-bottom: 2rem;
     }
 
     h3 {
@@ -56,6 +57,11 @@
     p {
       font-size: clamp(10px, 6vw, 18px);
       margin-block: 0.5rem;
+      line-height: 1.75rem;
+
+      @media screen and (max-width: 440px) {
+        line-height: 1.25rem;
+      }
     }
 
     input[type="submit"] {
