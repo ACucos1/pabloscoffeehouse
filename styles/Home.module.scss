@@ -119,7 +119,6 @@ $nav-width: 585px;
     aspect-ratio: 1/1;
     border-radius: 12px;
     background-color: $color-peach;
-    backdrop-filter: saturate(180%) blur(20px);
     text-align: center;
     display: flex;
     align-items: center;
@@ -200,6 +199,87 @@ $nav-width: 585px;
         position: relative;
         display: block;
       }
+    }
+  }
+} // End of .Nav
+
+// Hamburger button
+.Hamburger {
+  display: none;
+  position: fixed;
+  top: 20px;
+  right: 10px;
+  z-index: 100;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  &:before,
+  &:after,
+  & div {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: $color-coffee;
+    margin: 5px 0;
+    transition: all 0.3s ease;
+  }
+
+  & div {
+    margin: 5px 0 5px 0;
+  }
+}
+
+.HamburgerActive {
+  &:before {
+    transform: translateY(4px) rotate(45deg);
+  }
+
+  &:after {
+    transform: translateY(-4px) rotate( -45deg);
+  }
+
+  & div {
+    transform: scale(0);
+  }
+}
+
+// Mobile navigation container
+.MobileNav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 80%;
+  height: 100%;
+  background-color: rgba(white, 0.8);
+  backdrop-filter: saturate(180%) blur(20px);
+  transform: translateX(100%);
+  z-index: 99;
+  display: none;
+  flex-direction: column;
+  padding: 20px;
+  box-sizing: border-box;
+  transition: transform 0.5s ease;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 60px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    height: 100%;
+
+    li {
+      margin: 20px 0;
+      font-size: $font-size-h1;
+      color: $color-coffee;
+      font-weight: 300;
+      text-transform: uppercase;
+      cursor: pointer;
     }
   }
 }
@@ -488,7 +568,7 @@ $nav-width: 585px;
         display: block;
       }
     }
-  }
+  } // End of .Nav
 
   .HeroLogo {
     img {
@@ -540,10 +620,19 @@ $nav-width: 585px;
     }
     .OrderOnline {;
       width: 50px !important;
+      right: 60px !important;
       span {
         display: none !important;
       }
     }
+  }
+
+  .Hamburger {
+    display: block; // Only show the hamburger button on mobile
+  }
+
+  .MobileNav {
+    display: flex;
   }
 
   .Home {

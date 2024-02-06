@@ -8,31 +8,36 @@ import { useEffect, useRef, useState } from "react";
 export const Navbar = ({ navLinks }) => {
   const router = useRouter();
   const animationRef = useRef();
-  const { current: tl } = useRef(gsap.timeline({ paused: true }));
+  const mobileNavRef = useRef();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuVisible, setIsMobileMenuVisible] = useState(false);
 
   useEffect(() => {
     const nav = animationRef.current;
-    tl.to(nav, { top: 0, autoAlpha: 1, duration: 0.5, delay: 0.5 });
-    tl.play();
+    gsap.to(nav, { top: 0, autoAlpha: 1, duration: 0.5, delay: 0.5 });
 
     const handleScroll = () => {
-      // Check if the page is scrolled more than 50 pixels
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 50);
     };
 
-    // Add scroll event listener
     window.addEventListener('scroll', handleScroll);
-
-    // Clean up the event listener on component unmount
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [tl]); // You might want to keep an empty dependency array if tl does not depend on props or state
+  }, []);
+  
+  useEffect(() => {
+    if (isMobileMenuVisible) {
+      gsap.to(mobileNavRef.current, { x: 0, autoAlpha: 1, duration: 0.5 });
+    } else {
+      gsap.to(mobileNavRef.current, { x: '100%', autoAlpha: 0, duration: 0.5 });
+    }
+  }, [isMobileMenuVisible]);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuVisible(!isMobileMenuVisible);
+  };
 
   return (
+    <>
     <nav className={`${styles.Nav} ${isScrolled ? styles.scrolled : ''}`} ref={animationRef}>
       <div className={styles.NavInner}>
         <img src='/pablos-logo-dark.svg' alt='logo' className={`${styles.logonav2}`} />
@@ -81,6 +86,54 @@ export const Navbar = ({ navLinks }) => {
           <img src='order-online.svg' alt='Order Online' />
         </Link>
       </div>
+      <button className={`${styles.Hamburger} ${isMobileMenuVisible ? styles.HamburgerActive : ''}`} onClick={toggleMobileMenu}></button>
     </nav>
+
+    <div className={styles.MobileNav} ref={mobileNavRef}>
+            <ul>
+              <li>
+              <Link
+                href={navLinks.navLinks[0].link}
+                scroll={false}
+                className={
+                  navLinks.navLinks[0].link == router.asPath ? styles.Selected : ""
+                }>
+                {navLinks.navLinks[0].linkText}
+              </Link>
+              </li>
+              <li>
+              <Link
+                href={navLinks.navLinks[1].link}
+                scroll={false}
+                className={
+                  navLinks.navLinks[1].link == router.asPath ? styles.Selected : ""
+                }>
+                {navLinks.navLinks[1].linkText}
+              </Link>
+              </li>
+              <li>
+              <Link
+                href={navLinks.navLinks[2].link}
+                scroll={false}
+                className={
+                  navLinks.navLinks[2].link == router.asPath ? styles.Selected : ""
+                }>
+                {navLinks.navLinks[2].linkText}
+              </Link>
+              </li>
+              <li>
+              <Link
+                href={navLinks.navLinks[3].link}
+                scroll={false}
+                className={
+                  navLinks.navLinks[3].link == router.asPath ? styles.Selected : ""
+                }>
+                {navLinks.navLinks[3].linkText}
+              </Link>
+              </li>
+            </ul>
+        
+      </div>
+    </>
   );
 };
