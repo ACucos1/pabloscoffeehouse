@@ -20,15 +20,15 @@ export const Navbar = ({ navLinks }) => {
       setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-  
+
   useEffect(() => {
     if (isMobileMenuVisible) {
       gsap.to(mobileNavRef.current, { x: 0, autoAlpha: 1, duration: 0.5 });
     } else {
-      gsap.to(mobileNavRef.current, { x: '100%', autoAlpha: 0, duration: 0.5 });
+      gsap.to(mobileNavRef.current, { x: "100%", autoAlpha: 0, duration: 0.5 });
     }
   }, [isMobileMenuVisible]);
 
@@ -38,101 +38,130 @@ export const Navbar = ({ navLinks }) => {
 
   return (
     <>
-    <nav className={`${styles.Nav} ${isScrolled ? styles.scrolled : ''}`} ref={animationRef}>
-      <div className={styles.NavInner}>
-        <img src='/pablos-logo-dark.svg' alt='logo' className={`${styles.logonav2}`} />
-        <div className={`${styles.NavGroup} ${styles.NavGroup1}`}>
+      <nav
+        className={`${styles.Nav} ${isScrolled ? styles.scrolled : ""}`}
+        ref={animationRef}>
+        <div className={styles.NavInner}>
+          <div className={`${styles.NavGroup} ${styles.NavGroup1}`}>
+            <Link
+              href={navLinks.navLinks[0].link}
+              scroll={false}
+              className={
+                navLinks.navLinks[0].link == router.asPath
+                  ? styles.Selected
+                  : ""
+              }>
+              {navLinks.navLinks[0].linkText}
+            </Link>
+            <Link
+              href={navLinks.navLinks[1].link}
+              scroll={false}
+              className={
+                navLinks.navLinks[1].link == router.asPath
+                  ? styles.Selected
+                  : ""
+              }>
+              {navLinks.navLinks[1].linkText}
+            </Link>
+          </div>
+          <img
+            src='/pablos-logo-dark.svg'
+            alt='logo'
+            className={`${styles.logonav2}`}
+          />
+          <img
+            src='/pablos-logo-icon-dark.svg'
+            alt='logo'
+            className={`${styles.Logo}`}
+          />
+          <div className={`${styles.NavGroup} ${styles.NavGroup2}`}>
+            <Link
+              href={navLinks.navLinks[2].link}
+              scroll={false}
+              className={
+                navLinks.navLinks[2].link == router.asPath
+                  ? styles.Selected
+                  : ""
+              }>
+              {navLinks.navLinks[2].linkText}
+            </Link>
+            <Link
+              href={navLinks.navLinks[3].link}
+              scroll={false}
+              className={
+                navLinks.navLinks[3].link == router.asPath
+                  ? styles.Selected
+                  : ""
+              }>
+              {navLinks.navLinks[3].linkText}
+            </Link>
+          </div>
           <Link
-            href={navLinks.navLinks[0].link}
-            scroll={false}
-            className={
-              navLinks.navLinks[0].link == router.asPath ? styles.Selected : ""
-            }>
-            {navLinks.navLinks[0].linkText}
-          </Link>
-          <Link
-            href={navLinks.navLinks[1].link}
-            scroll={false}
-            className={
-              navLinks.navLinks[1].link == router.asPath ? styles.Selected : ""
-            }>
-            {navLinks.navLinks[1].linkText}
+            href={navLinks.navLinks[4].link}
+            target='_blank'
+            className={styles.OrderOnline}>
+            <span>Order Online</span>
+            <img src='order-online.svg' alt='Order Online' />
           </Link>
         </div>
-        <img src='/pablos-logo-icon-dark.svg' alt='logo' className={`${styles.Logo}`} />
-        <div className={`${styles.NavGroup} ${styles.NavGroup2}`}>
-          <Link
-            href={navLinks.navLinks[2].link}
-            scroll={false}
-            className={
-              navLinks.navLinks[2].link == router.asPath ? styles.Selected : ""
-            }>
-            {navLinks.navLinks[2].linkText}
-          </Link>
-          <Link
-            href={navLinks.navLinks[3].link}
-            scroll={false}
-            className={
-              navLinks.navLinks[3].link == router.asPath ? styles.Selected : ""
-            }>
-            {navLinks.navLinks[3].linkText}
-          </Link>
-        </div>
-        <Link
-          href={navLinks.navLinks[4].link}
-          target='_blank'
-          className={styles.OrderOnline}>
-          <span>Order Online</span>
-          <img src='order-online.svg' alt='Order Online' />
-        </Link>
-      </div>
-      <button className={`${styles.Hamburger} ${isMobileMenuVisible ? styles.HamburgerActive : ''}`} onClick={toggleMobileMenu}></button>
-    </nav>
+        <button
+          className={`${styles.Hamburger} ${
+            isMobileMenuVisible ? styles.HamburgerActive : ""
+          }`}
+          onClick={toggleMobileMenu}></button>
+      </nav>
 
-    <div className={styles.MobileNav} ref={mobileNavRef}>
-            <ul>
-              <li>
-              <Link
-                href={navLinks.navLinks[0].link}
-                scroll={false}
-                className={
-                  navLinks.navLinks[0].link == router.asPath ? styles.Selected : ""
-                }>
-                {navLinks.navLinks[0].linkText}
-              </Link>
-              </li>
-              <li>
-              <Link
-                href={navLinks.navLinks[1].link}
-                scroll={false}
-                className={
-                  navLinks.navLinks[1].link == router.asPath ? styles.Selected : ""
-                }>
-                {navLinks.navLinks[1].linkText}
-              </Link>
-              </li>
-              <li>
-              <Link
-                href={navLinks.navLinks[2].link}
-                scroll={false}
-                className={
-                  navLinks.navLinks[2].link == router.asPath ? styles.Selected : ""
-                }>
-                {navLinks.navLinks[2].linkText}
-              </Link>
-              </li>
-              <li>
-              <Link
-                href={navLinks.navLinks[3].link}
-                scroll={false}
-                className={
-                  navLinks.navLinks[3].link == router.asPath ? styles.Selected : ""
-                }>
-                {navLinks.navLinks[3].linkText}
-              </Link>
-              </li>
-            </ul>
-        
+      <div className={styles.MobileNav} ref={mobileNavRef}>
+        <ul>
+          <li>
+            <Link
+              href={navLinks.navLinks[0].link}
+              scroll={false}
+              className={
+                navLinks.navLinks[0].link == router.asPath
+                  ? styles.Selected
+                  : ""
+              }>
+              {navLinks.navLinks[0].linkText}
+            </Link>
+          </li>
+          <li>
+            <Link
+              href={navLinks.navLinks[1].link}
+              scroll={false}
+              className={
+                navLinks.navLinks[1].link == router.asPath
+                  ? styles.Selected
+                  : ""
+              }>
+              {navLinks.navLinks[1].linkText}
+            </Link>
+          </li>
+          <li>
+            <Link
+              href={navLinks.navLinks[2].link}
+              scroll={false}
+              className={
+                navLinks.navLinks[2].link == router.asPath
+                  ? styles.Selected
+                  : ""
+              }>
+              {navLinks.navLinks[2].linkText}
+            </Link>
+          </li>
+          <li>
+            <Link
+              href={navLinks.navLinks[3].link}
+              scroll={false}
+              className={
+                navLinks.navLinks[3].link == router.asPath
+                  ? styles.Selected
+                  : ""
+              }>
+              {navLinks.navLinks[3].linkText}
+            </Link>
+          </li>
+        </ul>
       </div>
     </>
   );
