@@ -1,126 +1,203 @@
-.Menu {
-  color: #22120b;
-  background-color: #fff;
-  text-align: center;
+// Font size variables
+$font-size-small: 10px;
+$font-size-1: 12px;
+$font-size-2: 14px;
+$font-size-3: 16px;
+$font-size-h2: 20px;
+$font-size-h1: 36px;
 
-  h2 {
-    margin-block-start: 5rem;
-  }
+// Color variables
+$color-espresso: #22120B;
+$color-coffee: #3C2B1F;
+$color-latte: #B18164;
+$color-caramel: #DAAE88;
+$color-cream: #F3E3CF;
+$color-sugar: #EFECEA;
+$color-olive-dark: #424F27;
+$color-olive: #556B2F;
+$color-olive-leaf: #BAB86C;
+$color-sea-water: #468D87;
+$color-beach: #3DCABE;
+$color-peach: #FFC599;
+
+$color-text: $color-espresso;
+$color-text-light: $color-sugar;
+$color-primary: $color-coffee;
+$color-background: $color-cream;
+
+.Menu {
+  color: $color-text;
+  background-color: $color-background;
 
   .Header {
-    height: 400px;
-    background-color: #bab86c;
+    height: 250px;
+    background-color: $color-olive-leaf;
     display: flex;
     align-items: flex-end;
     justify-content: center;
-
     background-image: url("../public/Fingerprint sideways.png");
     background-blend-mode: soft-light;
     background-size: cover;
-    // background-position:;
 
     h2 {
-      font-size: 64px;
-      font-weight: 350;
-      margin-block-end: 5rem;
+      font-size: 2*($font-size-h1);
+      color: $color-olive-dark;
+      font-weight: 100;
+      text-align: center;
+      margin-bottom: 1rem;
     }
   }
+  
 
-  .FoodMenu {
-    width: 80%;
+.MenuSectionContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem;
+  gap: 3rem;
+
+  .MenuSection {
+    padding: 3rem;
     margin: auto;
     display: flex;
+    flex-direction: row;
+    align-items: left;
+    max-width: 1000px;
+    background-color: $color-sugar;
+    border-radius: 2rem;
+  
+    h2 {
+      font-size: $font-size-h1;
+      margin-block-end: 2rem;
+      color: $color-latte;
+      font-weight: 200;
+    }
+  
+    .MenuSectionText {
+      text-align: center;
+      max-width: 600px;
+    }
+
+    @media screen and (min-width: 1024px) {
+      width: 1000px;
+    }
+  }
+  
+}
+
+  .FoodMenu {
+    display: flex;
     flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 1rem;
+    flex: 1;
+    width: 50%;
+
     .MenuItem {
-      width: 40%;
-      //   background-color: #fff;
       display: flex;
-      align-items: center;
-      margin-block: 1rem;
-      margin-inline: 5%;
+      align-items: stretch;
+      justify-content: space-between;
+      padding: 0;
+      width: 100%;
+      gap: 1rem;
+
       img {
-        // flex: 0.5;
-        width: 67px;
-        height: 67px;
         border-radius: 1000px;
-        margin: 1rem;
+        width: 100px; // Adjust according to the desired size
+        height: 100px; // Adjust according to the desired size
+        margin-right: 1rem;
       }
 
       .MenuItemText {
-        flex: 3;
+        flex-grow: 1;
         text-align: left;
-        margin-top: 1rem;
+
         .MenuItemTitle {
           display: flex;
-          height: 1rem;
           align-items: center;
 
           h3 {
-            // white-space: nowrap;
+            font-size: $font-size-3;
+            font-weight: 400;
+            margin: 0;
           }
+        }
+
+        p {
+          font-size: $font-size-2;
+          margin: 0.5rem 0 0;
+          color: fade_out($color-text,0.5);
         }
       }
 
       .Price {
-        white-space: nowrap;
-        font-weight: 700;
-        font-size: 18px;
-        flex: 1;
         text-align: right;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 2rem;
+        
         .PriceNum {
-          border-bottom: 1px dotted #22120b;
-        } // margin-bottom: 2rem;
-
+          padding: 0.25rem 0;
+        }
+        
         .Size {
           font-weight: 350;
         }
       }
     }
   }
-}
+  .MenuHero {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    width: 50%;
+    padding: 0 0 0 5rem;
+    img {
+      width: 100%;
+      aspect-ratio: 43/58;
+      object-fit: cover;
+      mask-image: url("../public/img-mask.svg");
+      mask-size: contain;
+      mask-repeat: no-repeat;
+      mask-position: center;
+      border: 10px solid $color-latte;
+      border-radius: 1000px;
+    }
+  }
 
-@media screen and (max-width: 825px) {
-  .Menu {
+  @media screen and (max-width: 825px) {
     .FoodMenu {
       flex-direction: column;
       align-items: center;
-      //   justify-content: center;
-      //   width: 100%;
       margin: unset;
-
       .MenuItem {
         width: 100%;
       }
     }
   }
-}
 
-@media screen and (max-width: 550px) {
-  .Menu {
-    // width: 80%;
+  @media screen and (max-width: 550px) {
     .FoodMenu {
       width: 90%;
-
       flex-direction: column;
       align-items: center;
-      //   justify-content: center;
-      //   width: 100%;
 
       .MenuItem {
+        flex-direction: column;
+        align-items: flex-start;
+
         img {
-          margin: 0.5rem;
+          margin: 0.5rem 0;
         }
+
         .MenuItemText {
-          font-size: 14px;
-          .MenuItemTitle {
-            h3 {
-              white-space: wrap;
-            }
-          }
+          font-size: $font-size-2;
         }
+
         .Price {
-          white-space: nowrap;
-          font-size: 14px;
+          align-items: flex-start;
+          font-size: $font-size-2;
         }
       }
     }
