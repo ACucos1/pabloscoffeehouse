@@ -40,8 +40,77 @@ export default function Home({ pageData, menuCategories, navLinks }) {
       const { Map } = await google.maps.importLibrary("maps");
 
       map = new Map(mapRef.current, {
-        center: { lat: 43.734626, lng: -79.345199 },
-        zoom: 16,
+        center: { lat: 43.7342541, lng: -79.3449967 },
+        zoom: 17,
+        styles: [
+          // Basic geometric styling
+          {elementType: 'geometry', stylers: [{color: '#F3E3CF'}]}, // cream
+          {elementType: 'labels.text.fill', stylers: [{color: '#22120B'}]}, // espresso
+          {elementType: 'labels.text.stroke', stylers: [{color: '#EFECEA'}]}, // sugar
+    
+          // Roads styling
+          {
+            featureType: 'road',
+            elementType: 'geometry',
+            stylers: [{color: '#DAAE88'}] // caramel
+          },
+          {
+            featureType: 'road.highway',
+            elementType: 'geometry',
+            stylers: [{color: '#B18164'}] // latte
+          },
+          {
+            featureType: 'road.highway',
+            elementType: 'geometry.stroke',
+            stylers: [{color: '#3C2B1F'}] // coffee
+          },
+    
+          // Natural features styling
+          {
+            featureType: 'landscape.natural',
+            elementType: 'geometry',
+            stylers: [{color: '#BAB86C'}] // olive-leaf
+          },
+          {
+            featureType: 'water',
+            elementType: 'geometry.fill',
+            stylers: [{color: '#468D87'}] // sea-water
+          },
+          {
+            featureType: 'poi.park',
+            elementType: 'geometry.fill',
+            stylers: [{color: '#556B2F'}] // olive
+          },
+    
+          // Points of Interest (POI) styling
+          {
+            featureType: 'poi',
+            elementType: 'geometry',
+            stylers: [{color: '#FFC599'}] // peach
+          },
+          {
+            featureType: 'poi.park',
+            elementType: 'labels.text.fill',
+            stylers: [{color: '#424F27'}] // olive-dark
+          },
+    
+          // Additional customizations
+          {
+            featureType: 'transit.station',
+            elementType: 'geometry',
+            stylers: [{color: '#3DCABE'}] // beach
+          }
+        ],
+        // Disable map controls
+        mapTypeControl: false,
+        streetViewControl: false,
+        fullscreenControl: false,
+        // Disable zooming and panning
+        zoomControl: false,
+        scrollwheel: false,
+        draggable: false,
+        // Additional options to disable gestures
+        gestureHandling: 'none',
 
         mapTypeControlOptions: {
           style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
@@ -50,9 +119,9 @@ export default function Home({ pageData, menuCategories, navLinks }) {
       });
 
       new google.maps.Marker({
-        position: { lat: 43.734626, lng: -79.345199 },
+        position: { lat: 43.7342541, lng: -79.3449967 },
         map,
-        title: "Pablos Coffee",
+        title: "Pablo's Coffee House",
       });
     });
   }, []);
