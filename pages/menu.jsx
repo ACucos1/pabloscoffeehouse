@@ -13,31 +13,24 @@ export default function menu({ menuCategories, navLinks }) {
         <div className={styles.Header}>
           <h2>Our Menu</h2>
         </div>
-        <div>
+        <div className={styles.MenuSectionContainer}>
           {menuCategories.map((category, idx) => (
-            <div key={idx}>
-              <h2 id={category.title.toLowerCase()}>{category.title}</h2>
+            <div key={idx} className={styles.MenuSection}>
               <div className={styles.FoodMenu}>
+                <h2 id={category.title.toLowerCase()}>{category.title}</h2>
                 {category.items.map((item, idx) => (
                   <div key={idx} className={styles.MenuItem}>
-                    <img src={item.itemImage} alt='' />
                     <div className={styles.MenuItemText}>
                       <div className={styles.MenuItemTitle}>
                         <h3>{item.itemName}</h3>
-                        <div className='dotted-spacer'></div>
                       </div>
-                      <p>{item.itemDesc ?? "   "}</p>
+                      {item.itemDesc && (
+                        <p className={styles.MenuItemDesc}>{item.itemDesc}</p>
+                      )}
                     </div>
                     <div className={styles.Price}>
                       {item.itemPrice.map((price, idx) => (
                         <div key={idx}>
-                          {item.itemPrice.length > 1 && (
-                            <span className={styles.Size}>
-                              {item.itemPrice.length > 2
-                                ? fullSizes[idx]
-                                : icedSizes[idx]}
-                            </span>
-                          )}{" "}
                           <span className={styles.PriceNum}>
                             ${parseFloat(price).toFixed(2)}
                           </span>
@@ -46,6 +39,9 @@ export default function menu({ menuCategories, navLinks }) {
                     </div>
                   </div>
                 ))}
+              </div>
+              <div className={styles.MenuHero}>
+                <img src={category.items[0].itemImage} alt="" />
               </div>
             </div>
           ))}
