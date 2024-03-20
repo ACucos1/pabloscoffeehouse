@@ -31,9 +31,9 @@ export default function Contact({ contactInfo, navLinks }) {
       });
 
       new google.maps.Marker({
-        position: { lat: 43.734626, lng: -79.345199 },
+        position: { lat: 43.7342541, lng: -79.3449967 },
         map,
-        title: "Pablos Coffee",
+        title: "Pablos Coffee House",
       });
     });
   }, []);
@@ -48,14 +48,51 @@ export default function Contact({ contactInfo, navLinks }) {
         <div className={styles.Body}>
           <div className={styles.BodyInner}>
             <div className={styles.MapWrapper}>
-              <h3>Find us at the Shops at Don Mills</h3>
               <div className={styles.Map} ref={mapRef}></div>
+              <div className={styles.ContactInfo}>
+                <p>
+                  <span>Phone:</span> {contactInfo.phoneNumber}
+                </p>
+                <p>
+                  <span>Address:</span> <address>32 Clock Tower Rd, North York, ON M3C 0G2</address>
+                </p>
+              </div>
             </div>
-            <div className={styles.ContactInfo}>
-              <span>
-                (<strong>+1</strong>) {contactInfo.phoneNumber}
-              </span>
-              <span>{contactInfo.email}</span>
+            <div className={styles.ContactForm}>
+              <form
+                name="contact"
+                method="POST"
+                data-netlify="true"
+                action="/thank-you"
+                className={styles.Form}>
+                <input type="hidden" name="form-name" value="contact" />
+                <div>
+                  <label htmlFor="name">Name</label>
+                  <input type="text" name="name" id="name" required />
+                </div>
+                <div>
+                  <label htmlFor="email">Email</label>
+                  <input type="email" name="email" id="email" required />
+                </div>
+                <div>
+                  <label htmlFor="phone">Phone</label>
+                  <input type="tel" name="phone" id="phone" required />
+                </div>
+                <div>
+                  <label htmlFor="subject">Subject</label>
+                  <select name="subject" id="subject" required>
+                    <option value="general">General</option>
+                    <option value="complaint">Complaint</option>
+                    <option value="feedback">Feedback</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div>
+                  <label htmlFor="message">Message</label>
+                  <textarea name="message" id="message" required />
+                </div>
+                <button type="submit">Submit</button>
+              </form>
             </div>
           </div>
         </div>

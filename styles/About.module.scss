@@ -1,5 +1,5 @@
 .About {
-  color: #22120b;
+  color: var(--color-espresso);
   background-color: #fff;
   text-align: center;
 
@@ -8,73 +8,73 @@
   }
 
   .Header {
-    height: 400px;
-    background-color: #bab86c;
+    height: 250px;
+    background-color: var(--color-olive-leaf);
     display: flex;
     align-items: flex-end;
     justify-content: center;
-
     background-image: url("../public/Fingerprint sideways.png");
     background-blend-mode: soft-light;
     background-size: cover;
-    // background-position:;
 
     h2 {
-      font-size: 64px;
-      font-weight: 350;
-      margin-block-end: 5rem;
+      font-size: calc(2 * var(--font-size-h1));
+      color: var(--color-olive-dark);
+      font-weight: 100;
+      text-align: center;
+      margin-bottom: 1rem;
     }
   }
 
   .Body {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     padding: 3rem;
-
+  
     .BodyInner {
       display: flex;
-      align-items: center;
-      justify-content: center;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
       width: 80%;
+      max-width: 1200px;
+  
+      & > div {
+        flex: 1;
+        padding-right: 2rem;
+  
+        h3, p {
+          margin: 0;
+          padding: 0.5rem 0;
+          text-align: left;
+          line-height: 1.75rem;
+        }
+      }
+  
       img {
-        width: 50%;
-      }
-
-      & > * {
-        width: 40%;
-        margin: auto;
-        text-align: left;
+        flex: 1;
+        max-width: 50%;
+        height: auto;
+        object-fit: cover;
       }
     }
   }
-}
-
-@media screen and (max-width: 825px) {
-  .About {
-    .Body {
-      .BodyInner {
-        flex-direction: column;
-        width: 100%;
-
-        img {
-          width: 80%;
-        }
-
-        & > * {
-          width: 100%;
-        }
+  
+  @media (max-width: 1024px) {
+    .Body .BodyInner {
+      flex-direction: column;
+      text-align: center;
+  
+      & > div {
+        padding-right: 0;
+      }
+  
+      img {
+        max-width: 100%;
+        margin-top: 2rem;
       }
     }
   }
-}
-
-@media screen and (max-width: 550px) {
-  .About {
-    .Header {
-      h2 {
-        line-height: 4rem;
-      }
-    }
-  }
-}
+  
+} // End of .About

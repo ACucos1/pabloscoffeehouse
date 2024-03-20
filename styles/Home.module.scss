@@ -1,34 +1,7 @@
-// Font size variables
-$font-size-small: 10px;
-$font-size-1: 12px;
-$font-size-2: 14px;
-$font-size-3: 16px;
-$font-size-h2: 20px;
-$font-size-h1: 36px;
-
-// Color variables
-$color-espresso: #22120b;
-$color-coffee: #3c2b1f;
-$color-latte: #b18164;
-$color-caramel: #daae88;
-$color-cream: #f3e3cf;
-$color-sugar: #efecea;
-$color-olive-dark: #424f27;
-$color-olive: #556b2f;
-$color-olive-leaf: #bab86c;
-$color-sea-water: #468d87;
-$color-beach: #3dcabe;
-$color-peach: #ffc599;
-
-$color-text: $color-espresso;
-$color-text-light: $color-sugar;
-$color-primary: $color-coffee;
-
-$nav-width: 750px;
 .Nav {
   position: fixed;
   width: 35%;
-  width: $nav-width;
+  width: var(--nav-width);
   left: 50%;
   translate: -50% 0;
   margin-top: 4rem;
@@ -43,10 +16,10 @@ $nav-width: 750px;
   .NavInner {
     position: relative;
     height: 100%;
-    width: $nav-width;
+    width: var(--nav-width);
     margin: auto;
-    color: $color-text;
-    font-size: $font-size-3;
+    color: var(--color-text);
+    font-size: var(--font-size-3);
     font-weight: 700;
     text-transform: uppercase;
     padding-inline: 2rem;
@@ -81,7 +54,7 @@ $nav-width: 750px;
           bottom: -4px;
           left: 0;
           width: 0;
-          background-color: $color-coffee;
+          background-color: var(--color-coffee);
           height: 2px;
           transition: width 0.3s ease;
         }
@@ -101,7 +74,7 @@ $nav-width: 750px;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background-color: $color-sugar;
+      background-color: var(--color-sugar);
       border-radius: 1000px;
       height: 100px;
       padding: 5px;
@@ -115,7 +88,7 @@ $nav-width: 750px;
     width: 60px;
     height: 60px;
     border-radius: 12px;
-    background-color: $color-peach;
+    background-color: var(--color-peach);
     text-align: center;
     display: flex;
     align-items: center;
@@ -136,10 +109,10 @@ $nav-width: 750px;
       position: absolute;
       opacity: 0;
       transition: opacity 0.3s ease;
-      color: $color-text;
+      color: var(--color-text);
       font-weight: 700;
       width: 50px;
-      font-size: $font-size-small;
+      font-size: var(--font-size-small);
       text-align: left;
     }
 
@@ -174,7 +147,7 @@ $nav-width: 750px;
       height: 50px;
       aspect-ratio: 2/1;
       border-radius: 5px;
-      border: 1px solid $color-caramel;
+      border: 1px solid var(--color-caramel);
 
       span {
         opacity: 1;
@@ -203,7 +176,7 @@ $nav-width: 750px;
     display: block;
     width: 30px;
     height: 3px;
-    background-color: $color-coffee;
+    background-color: var(--color-coffee);
     margin: 5px 0;
     transition: all 0.3s ease;
   }
@@ -257,8 +230,8 @@ $nav-width: 750px;
 
     li {
       margin: 20px 0;
-      font-size: $font-size-h1;
-      color: $color-coffee;
+      font-size: var(--font-size-h1);
+      color: var(--color-coffee);
       font-weight: 300;
       text-transform: uppercase;
       cursor: pointer;
@@ -286,7 +259,7 @@ $nav-width: 750px;
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba($color-espresso, 0.5);
+      background-color: rgba(var(--color-espresso), 0.5);
       backdrop-filter: saturate(180%) blur(3px);
       mix-blend-mode: multiply;
     }
@@ -312,8 +285,8 @@ $nav-width: 750px;
 
       h2 {
         font-weight: 100;
-        font-size: $font-size-h1;
-        line-height: calc($font-size-h1 + 1rem);
+        font-size: var(--font-size-h1);
+        line-height: calc(var(--font-size-h1) + 1rem);
         margin-block-start: 5rem;
         max-width: 400px;
       }
@@ -365,19 +338,19 @@ $nav-width: 750px;
       width: 100%;
       font-weight: 500;
       &:first-child {
-        background-color: $color-coffee;
+        background-color: var(--color-coffee);
         background-image: url(../public/Fingerprint.png);
         background-size: contain;
         background-blend-mode: soft-light;
       }
 
       &:nth-child(4) {
-        background-color: $color-cream;
+        background-color: var(--color-cream);
         background-image: url("../public/leaves-pattern.png");
         background-repeat: no-repeat;
         background-size: contain;
         background-blend-mode: multiply;
-        color: $color-text;
+        color: var(--color-text);
         overflow: hidden;
 
         span {
@@ -390,7 +363,7 @@ $nav-width: 750px;
             left: 0;
             width: 100%;
             height: 200%;
-            background-color: rgba($color-cream, 1);
+            background-color: var(--color-cream);
             filter: blur(100px);
             transform: scale(1.5);
             z-index: -1;
@@ -399,17 +372,17 @@ $nav-width: 750px;
       }
 
       &:nth-child(5) {
-        background-color: $color-sugar;
+        background-color: var(--color-sugar);
         background-image: url("../public/dried-leaves.png");
         background-repeat: no-repeat;
         background-size: contain;
         background-blend-mode: soft-light;
-        color: $color-text;
+        color: var(--color-text);
       }
 
       &:nth-child(8) {
-        background-color: $color-peach;
-        color: $color-text;
+        background-color: var(--color-peach);
+        color: var(--color-text);
       }
 
       .GridItemInner {
@@ -423,9 +396,9 @@ $nav-width: 750px;
 
         span {
           display: block;
-          font-size: $font-size-h1;
+          font-size: var(--font-size-h1);
           font-weight: 100;
-          line-height: calc($font-size-h1 + 1rem);
+          line-height: calc(var(--font-size-h1) + 1rem);
           max-width: 600px;
         }
       }
@@ -446,7 +419,7 @@ $nav-width: 750px;
 
 .Footer {
   height: 300px;
-  background-color: $color-espresso;
+  background-color: var(--color-espresso);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -542,7 +515,7 @@ $nav-width: 750px;
       height: 50px;
       aspect-ratio: 2/1;
       border-radius: 5px;
-      border: 1px solid $color-caramel;
+      border: 1px solid var(--color-caramel);
 
       span {
         opacity: 1;
@@ -572,7 +545,6 @@ $nav-width: 750px;
     .Grid {
       grid-template-columns: 1fr;
       grid-template-rows: repeat(8, 1fr);
-      // grid-template-rows: unset;
 
       .GridItemInner {
         padding-block: 2rem;
@@ -582,7 +554,6 @@ $nav-width: 750px;
 
   .Footer {
     .FooterMain {
-      // flex-direction: column;
       .FooterNav {
         flex-direction: column;
       }

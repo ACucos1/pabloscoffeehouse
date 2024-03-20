@@ -1,115 +1,153 @@
 .Contact {
-  color: #22120b;
+  color: var(--color-text);
   background-color: #fff;
   text-align: center;
 
-  h2 {
-    margin-block-start: 5rem;
-  }
-
   .Header {
-    height: 400px;
-    background-color: #bab86c;
+    height: 250px;
+    background-color: var(--color-olive-leaf);
     display: flex;
     align-items: flex-end;
     justify-content: center;
-
     background-image: url("../public/Fingerprint sideways.png");
     background-blend-mode: soft-light;
     background-size: cover;
-    // background-position:;
 
     h2 {
-      font-size: 64px;
-      font-weight: 350;
-      margin-block-end: 5rem;
+      font-size: calc(2 * var(--font-size-h1));
+      color: var(--color-olive-dark);
+      font-weight: 100;
+      text-align: center;
+      margin-bottom: 1rem;
     }
   }
 
   .Body {
-    padding: 3rem;
+    padding: 3rem 1rem;
 
     .BodyInner {
-      width: 100%;
       display: flex;
-      align-items: center;
-      justify-content: space-around;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
 
-      .MapWrapper {
-        width: 50%;
-        .Map {
-          height: 400px;
-          width: 100%;
-        }
+      .MapWrapper, .ContactForm {
+        flex: 1;
+        min-width: 250px;
+        margin: 10px;
       }
 
-      .ContactInfo {
+      .Map {
+        height: 400px;
+        background-color: var(--color-latte);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .Contact .Header h2 {
+    font-size: var(--font-size-h2);
+  }
+
+  .Contact .Body .BodyInner {
+    flex-direction: column;
+    align-items: center;
+
+    .MapWrapper, .ContactForm {
+      width: 100%;
+      margin: 10px 0;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .Contact .Body {
+    padding: 2rem 1rem;
+  }
+
+  .Contact .Body .BodyInner .Map {
+    height: 300px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .Contact .Header {
+    height: 300px;
+  }
+
+  .Contact .Header h2 {
+    font-size: var(--font-size-2);
+    margin-block-end: 2rem;
+  }
+
+  .Contact .Body .BodyInner .ContactForm .Form div label {
+    font-size: var(--font-size-small);
+  }
+  
+  .ContactForm .Form button[type="submit"] {
+    padding: 8px 16px;
+  }
+}
+
+.ContactForm {
+  width: fit-content;
+  max-width: 100%;
+
+  .Form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      
+      label {
+        font-size: var(--font-size-2);
+        color: var(--color-text);
+        margin-bottom: 5px;
         text-align: left;
-        // margin: auto;
-        // width: 50%;
-        span {
-          font-size: 34px;
-          display: block;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      select,
+      textarea {
+        font-size: var(--font-size-3);
+        padding: 10px;
+        border: 1px solid var(--color-cream);
+        border-radius: 4px;
+        color: var(--color-text);
+
+        &:focus {
+          border-color: var(--color-beach);
+          outline: none;
         }
       }
-    }
-  }
-}
 
-@media screen and (max-width: 1200px) {
-  .Contact {
-    .Body {
-      .BodyInner {
-        flex-direction: column;
-
-        .MapWrapper {
-          width: 100%;
-        }
-
-        .ContactInfo {
-          span {
-            font-size: 24px;
-            border-bottom: 1px dotted brown;
-            margin: 1rem;
-          }
-        }
+      textarea {
+        resize: vertical;
+        min-height: 120px;
       }
     }
-  }
-}
 
-@media screen and (max-width: 525px) {
-  .Contact {
-    .Body {
-      padding: 1rem;
-      .BodyInner {
-        flex-direction: column;
+    button[type="submit"] {
+      font-size: var(--font-size-3);
+      padding: 10px 20px;
+      background-color: var(--color-olive);
+      color: var(--color-cream);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      width: 100%;
 
-        .MapWrapper {
-          width: 100%;
-        }
-
-        .ContactInfo {
-          span {
-            font-size: 24px;
-            border-bottom: 1px dotted brown;
-            margin: 1rem;
-          }
-        }
-      }
-    }
-  }
-}
-
-@media screen and (max-width: 425px) {
-  .Contact {
-    .Body {
-      .BodyInner {
-        .ContactInfo {
-          span {
-            font-size: 16px;
-          }
-        }
+      &:hover {
+        background-color: var(--color-olive-dark);
       }
     }
   }
