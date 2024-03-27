@@ -96,13 +96,7 @@ export const Navbar = ({ navLinks }) => {
               {navLinks.navLinks[3].linkText}
             </Link>
           </div>
-          <Link
-            href={navLinks.navLinks[4].link}
-            target='_blank'
-            className={styles.OrderOnline}>
-            <span>Order Online</span>
-            <img src='order-online.svg' alt='Order Online' />
-          </Link>
+
         </div>
         <button
           className={`${styles.Hamburger} ${
