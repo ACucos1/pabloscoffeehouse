@@ -11,7 +11,7 @@ export const Footer = ({ navLinks }) => {
     <footer className={styles.Footer}>
       <div className={styles.FooterMain}>
         <div className={styles.FooterNav}>
-          <img src='PablosLogo3.png' alt='' />
+          <img src='pablos-logo.svg' alt='' />
           {navLinks.navLinks
             .filter((link) => link.linkText != "Order Online")
             .map((link, idx) => (
