@@ -9,7 +9,6 @@ import client from "../sanity/client";
 import styles from "../styles/Home.module.scss";
 import { useRouter } from "next/router";
 import { gsap } from "gsap";
-import AnnouncementModal from "../components/AnnouncementModal";
 
 const GOOGLE_MAPS_API_KEY = "AIzaSyBY-wvD3hJfZXZ2w5HaH4VtePd_k6Mf2ow";
 
@@ -138,7 +137,7 @@ Sample our exquisite blends, fine pastries, and refreshing iced drinks.'
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Navbar navLinks={navLinks} />
-      <AnnouncementModal />
+
       <section className={styles.Home} id='Home'>
         <div className={styles.Hero}>
           <div className={styles.HeroLogo}>
