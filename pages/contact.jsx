@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
+import { GoogleAnalytics } from '../components/GoogleAnalytics';
 import { useEffect, useRef } from "react";
 import client from "../sanity/client";
 import styles from "../styles/Contact.module.scss";

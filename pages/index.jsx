@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { Navbar } from "../components/Navbar";
 import { SocialsList } from "../components/SocialsList";
 import { Footer } from "../components/Footer";
+import { GoogleAnalytics } from '../components/GoogleAnalytics';
 import client from "../sanity/client";
 import styles from "../styles/Home.module.scss";
 import { useRouter } from "next/router";
@@ -135,6 +136,7 @@ export default function Home({ pageData, menuCategories, navLinks }) {
 Sample our exquisite blends, fine pastries, and refreshing iced drinks.'
         />
         <link rel='icon' href='/favicon.ico' />
+        <GoogleAnalytics />
       </Head>
       <Navbar navLinks={navLinks} />
 
