@@ -39,6 +39,13 @@ export default function Contact({ contactInfo, navLinks }) {
     });
   }, []);
 
+  useEffect(() => {
+    // Conversion tracking code
+    if (window.gtag) {
+      window.gtag('event', 'conversion', {'send_to': 'AW-16520888076/QL1ECOeKvqMZEIz-4sU9'});
+    }
+  }, []);  
+
   return (
     <>
       <Navbar navLinks={navLinks} />
@@ -48,17 +55,6 @@ export default function Contact({ contactInfo, navLinks }) {
         </div>
         <div className={styles.Body}>
           <div className={styles.BodyInner}>
-            <div className={styles.MapWrapper}>
-              <div className={styles.Map} ref={mapRef}></div>
-              <div className={styles.ContactInfo}>
-                <p>
-                  <span>Phone:</span> {contactInfo.phoneNumber}
-                </p>
-                <p>
-                  <span>Address:</span> <address>32 Clock Tower Rd, North York, ON M3C 0G2</address>
-                </p>
-              </div>
-            </div>
             <div className={styles.ContactForm}>
                 <h3>Thank you for reaching out!</h3>
                 <p>We have received your message and will get back to you as soon as possible.</p>
