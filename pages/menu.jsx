@@ -1,6 +1,6 @@
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
-import { GoogleAnalytics } from '../components/GoogleAnalytics';
+import { GoogleAnalytics } from "../components/GoogleAnalytics";
 import client from "../sanity/client";
 import styles from "../styles/Menu.module.scss";
 
@@ -30,7 +30,7 @@ export default function menu({ menuCategories, navLinks }) {
                       )}
                     </div>
                     <div className={styles.Price}>
-                      {item.itemPrice.map((price, idx) => (
+                      {item.itemPrice?.map((price, idx) => (
                         <div key={idx}>
                           <span className={styles.PriceNum}>
                             ${parseFloat(price).toFixed(2)}
